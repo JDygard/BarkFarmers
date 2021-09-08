@@ -53,6 +53,4 @@ There are two ways to go about this: Anyone can create a commercial account, or 
     - single
 
 ## StoneScapes
-
-### Splash page
-Two sections:
+Stonescapes By Design is a partner company under the same client. The client decided against including Stonescapes in the design, so it will not be added.
