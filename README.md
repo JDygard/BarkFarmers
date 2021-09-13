@@ -69,3 +69,125 @@ The client is pleased with the commercial services page as suggested. It address
 
 ## StoneScapes
 Stonescapes By Design is a partner company under the same client. The client decided against including Stonescapes in the design, so it will not be added.
+
+
+***
+# The 5 Elements
+
+## Strategy
+Bark Farmers is an established commercial firewood producer/distributer in Indianapolis, IN. It has an established commercial customerbase which comprises the bulk of its business. It has much less direct consumer sales and a shaky web presence, especially compared to direct competitors in the region. Thus, the philosophy of the site will be to draw in direct-to-consumer customers with a clean, streamlined interface, while also adding a businesslike landing page with features to help retain future and current commercial customers.
+
+### Targeted audience
+1. Current consumers
+2. New consumers
+3. Current commercial customers
+4. New commercial customers
+
+### Current Consumers:
+As a current consumer I:
+- Want a clean and easy to use system
+- Want to feel safe entering my payment details
+- Want to compare prices and services
+
+### New Consumers:
+As a new consumer I:
+- Want to learn about the benefits of kiln-dried firewood
+- Want a clean and easy to use system
+- Want to feel safe entering my payment details
+- Want to compare prices and services
+
+### Current Commercial Customers:
+As a current commercial customer I:
+- Want an intuitive, simple interface 
+- Want access to transactional records
+- Want to see what services and products are currently available
+- Want to view and settle open invoices
+- Want to feel safe entering my payment details
+
+### New Commercial Customers:
+As a new commercial customer I:
+- Want to see a professional-seeming website
+- Want to preview what a commercial account entails
+- Want an intuitive, simple interface 
+- Want to request a commercial account
+
+***
+## Scope
+
+The site should be simple enough to appeal to someone who "just wants to hop on and order some wood" while retaining enough features to be powerful. It should also be a professional presentation to attract and retain commercial customers.
+
+### Functional requirements
+Note: there is some overlap between the grades.
+
+Consumer-grade:  
+- Splash page
+- Store page
+- Shopping cart
+- Payment processing
+- Limited delivery range
+
+Commercial-grade:
+- Login
+- Account Management
+- Product Availability
+- Place order
+
+### Content requirements
+Consumer-grade:
+- Smooth, modern design with intuitive, simple features
+- Product images
+
+Commercial grade:
+- Invoices
+
+### Optional Features
+![alt text](assets/images/readme/viability-importance-grid.jpg)
+- Subscription services
+
+    Subscription services would take a lot more work than a traditional transaction, and so represent a "reach goal" for the site. However, the potential to create automatically recurring customers would be very valuable to the company.
+
+- Commercial Transaction History
+
+    A commercial transaction history would consist of downloadable PDFs and/or the ability to request a PDF of a particular invoice. This would require the client working within the system more, as well as some work with storing PDFs for retrieval.
+
+- Store page animations
+
+    Store page animations would have smooth animations when clicking on store items to create a connection between elements and make the experience more intuitive. This would be accomplished primarily with CSS and JS systems.
+
+- Commercial page animations
+
+    Commercial page animations would make the interface more complex but more intuitive, with items emerging from their constituent elements to emphasize their connection.
+
+***
+## Structure
+### Interaction design
+![alt text](assets/images/readme/structure.png)
+
+### Information Architecture
+Information architecture will be thoroughly designed when we know more about what information will be stored and how.
+
+***
+## Skeleton
+### Interface design
+
+The "splash" or front page is the hub. The nav bar and background on the splash page serve as the unifying element between all consumer pages. The aim is to create the feel of a single-page website with progressive revelation between all of the consumer areas, including login and account management. The goal is to streamline the process of getting to the payment page as much as possible.
+
+### Navigation design
+### Information design
+***
+## Surface
+### Color scheme
+    #FAFAFA
+    #000000
+### Typography
+#### Interface elements:
+The existing logo has been with the company since inception, and thus the developer is choosing Libre Baskerville for interface elements to match the serif font of the logo.
+#### Information elements:
+For a cleaner look to paragraphs and other information blocks, Montserrat has been chosen.
+
+### 
+![alt text](assets/images/readme/wireframing/splash.png)
+## 
+
+![alt text](assets/images/readme/wireframing/store.png)
+![alt text](assets/images/readme/wireframing/store-order.png)
