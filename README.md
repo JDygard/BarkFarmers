@@ -185,9 +185,10 @@ The existing logo has been with the company since inception, and thus the develo
 #### Information elements:
 For a cleaner look to paragraphs and other information blocks, Montserrat has been chosen.
 
-### 
+### Splash page
 ![alt text](assets/images/readme/wireframing/splash.png)
 ## 
 
 ![alt text](assets/images/readme/wireframing/store.png)
 ![alt text](assets/images/readme/wireframing/store-order.png)
+![alt text](assets/images/readme/wireframing/commercial.png)
