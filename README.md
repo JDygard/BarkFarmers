@@ -86,6 +86,7 @@ Bark Farmers is an established commercial firewood producer/distributer in India
 ### Current Consumers:
 As a current consumer I:
 - Want a clean and easy to use system
+- Want to order firewood
 - Want to feel safe entering my payment details
 - Want to compare prices and services
 
@@ -93,6 +94,7 @@ As a current consumer I:
 As a new consumer I:
 - Want to learn about the benefits of kiln-dried firewood
 - Want a clean and easy to use system
+- Want to order firewood
 - Want to feel safe entering my payment details
 - Want to compare prices and services
 
