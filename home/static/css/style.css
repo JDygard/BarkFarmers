@@ -5,7 +5,7 @@ html, body {
 /* Navbar styling */
 
 #hero-image {
-    background: no-repeat 0px -350px url("/static/hero-bg.jpeg");
+    background: no-repeat top url("/static/hero-bg.jpeg");
     background-size: cover;
     margin: 0;
     max-width: 100%;
@@ -20,7 +20,7 @@ html, body {
 }
 
 .navbar-brand > img {
-    height: 150px;
+    height: 10vh;
     margin: 25px;
     margin-left: 75px;
 }
@@ -38,9 +38,27 @@ html, body {
     color: rgba(0,0,0,1);
 }
 
+.navbar-toggler {
+    position: absolute;
+}
+
 /* index page  styling */
 
 #hero-content {
-    display: block;
+    text-align: center;
+    height: 90vh;
+    color: #e3e6f2
+}
+
+#hero-blurb > h1 {
+    font-size: 54px;
+}
+
+/* Universal elements styling */
+
+/* Button */
+.btn {
+    font-family: "Montserrat", sans-serif;
+    color: #e3e6f2;
 }
 
