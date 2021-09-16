@@ -6,7 +6,7 @@ html, body {
 /* Navbar styling */
 
 #hero-image {
-    background: no-repeat fixed url("/static/hero-bg.jpeg");
+    background: no-repeat fixed top url("/static/hero-bg.jpeg");
     background-size: cover;
     margin: 0;
     max-width: 100%;
@@ -79,12 +79,69 @@ html, body {
     background-color: rgba(1, 255, 255, 0);
 }
 
-/* Universal elements styling */
+/* Order page styling */
 
-#test {
-    width: 100%;
-    height: 80vh;
+#storefront {
+    text-align: center;
+    height: 75vh;
+    width: 80vw;
+    color: #e3e6f2;
+    background-color: rgba(250,250,250,.9);
+    border-radius: 50px;
+    border: 2px solid black;
+    box-shadow: 3px 3px rgba(0,0,0,0.2);
 }
+
+#store-items{
+    width: 90%;
+    height: 60vh;
+    text-align: center;
+}
+
+.store-item, .store-item-portrait  {
+    padding: 0px;
+    max-height: 100%;
+    transition: 0.3s;
+}
+
+.store-item:hover, .store-item-portrait:hover {
+    cursor: pointer;
+    scale: 1.01;
+    filter: drop-shadow(2px 2px 4px white)
+}
+
+.store-item:nth-child(1), .store-item-portrait:nth-child(1) {
+    background: no-repeat center url("/static/hardwoods.jpeg");
+    background-size: cover;    
+}
+.store-item:nth-child(2), .store-item-portrait:nth-child(2) {
+    background: no-repeat center url("/static/softwoods.jpg");
+    background-size: cover;    
+}
+.store-item:nth-child(3), .store-item-portrait:nth-child(3) {
+    background: no-repeat center url("/static/cookingwoods.jpg");
+    background-size: cover;    
+}
+
+.store-item-portrait {
+    height: 20vh;
+}
+
+.store-text {
+    padding-top: 26vh;
+}
+
+.store-text-portrait {
+    padding-top: 6vh;
+}
+
+.store-text, .store-text-portrait {
+    height:100%;
+    text-shadow: 2px 2px 3px black;
+}
+
+
+/* Universal elements styling */
 
 /* Button */
 .btn {

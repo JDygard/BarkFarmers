@@ -1,2 +1,63 @@
 {% extends "base.html" %}
 {% load static %}
+{% block content %}
+    <div class="container" id="hero-image">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#"><img src="{% static 'logo-no-bg.png' %}" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="navbar-toggler-icon"></div>
+                </button>
+                <div class="collapse navbar-collapse" id="navBar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                        <a class="nav-link" href="#"> Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#"> Order </a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#"> Learn More</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#"> Log In</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="row align-items-center mx-auto" id="storefront">
+            <div class="col">
+                <div class="row no-gutters mx-auto my-auto" id="store-items">
+                    <div class="col-md-4 store-item">
+                        <h1 class="store-text">Hard Woods</h1>
+                    </div>
+                    <div class="col-md-4 store-item">
+                        <h1 class="store-text">Soft Woods</h1>
+                    </div>
+                    <div class="col-md-4 store-item">
+                        <h1 class="store-text">Cooking Woods</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let reOrient = function() {
+            let items = document.getElementById("store-items").children;
+            if (window.innerHeight > window.innerWidth) {
+                for (let i = 0; i < items.length; i++){
+                    items[i].setAttribute("class", "col-md-12 store-item-portrait")
+                    items[i].firstElementChild.setAttribute("class", "store-text-portrait")
+                }
+            } else {
+                for (let i = 0; i < items.length; i++){
+                    items[i].setAttribute("class", "col-md-4 store-item")
+                    items[i].firstElementChild.setAttribute("class", "store-text")
+                }
+            }
+        }
+        window.addEventListener("resize", reOrient)
+        window.addEventListener("load", reOrient)
+    </script>
+{% endblock %}
