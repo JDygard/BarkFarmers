@@ -147,8 +147,8 @@ html, body {
 }
 
 .store-text, .store-text-portrait {
-    height:100%;
     text-shadow: 2px 2px 10px black;
+    pointer-events: none;
 }
 
 

@@ -19,25 +19,38 @@
             </div>
         </div>
     </div>
-    <script>
-        let doodad = "{% url 'home' %}"
-        console.log(doodad)
-        
+    <script>        
+        let storeItems = document.getElementById("store-items").children; 
+
+        // Reorient is used by the event listeners to re-orient the bootstrap layout to a vertical one if the screen is taller than wide (i.e. tablets)
         let reOrient = function() {
-            let items = document.getElementById("store-items").children;
             if (window.innerHeight > window.innerWidth) {
-                for (let i = 0; i < items.length; i++){
-                    items[i].setAttribute("class", "col-md-12 store-item-portrait")
-                    items[i].firstElementChild.setAttribute("class", "store-text-portrait")
+                for (let i = 0; i < storeItems.length; i++){
+                    storeItems[i].setAttribute("class", "col-md-12 store-item-portrait")
+                    storeItems[i].firstElementChild.setAttribute("class", "store-text-portrait")
                 }
             } else {
-                for (let i = 0; i < items.length; i++){
-                    items[i].setAttribute("class", "col-md-4 store-item")
-                    items[i].firstElementChild.setAttribute("class", "store-text")
+                for (let i = 0; i < storeItems.length; i++){
+                    storeItems[i].setAttribute("class", "col-md-4 store-item")
+                    storeItems[i].firstElementChild.setAttribute("class", "store-text")
                 }
             }
         }
-        window.addEventListener("resize", reOrient)
-        window.addEventListener("load", reOrient)
+        window.addEventListener("resize", reOrient);
+        window.addEventListener("load", reOrient);
+        console.log(storeItems)
+
+        for (let t = 0; t < storeItems.length; t++) {
+            storeItems[t].addEventListener("click", function(event) {
+                console.log(event.target)
+                event.currentTarget.setAttribute("class", "col-md-10 store-item")
+                for (let x = 0; x < storeItems.length; x++) {
+                    if (storeItems[x] !== event.target) {
+                        storeItems[x].setAttribute("class", "col-md-1 store-item")
+                    }
+                }
+            });
+        };
+
     </script>
 {% endblock %}
