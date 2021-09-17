@@ -2,36 +2,13 @@
 {% load static %}
 {% block content %}
     <div class="container" id="hero-image">
-        <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#"><img src="{% static 'logo-no-bg.png' %}" alt=""></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="navbar-toggler-icon"></div>
-                </button>
-                <div class="collapse navbar-collapse" id="navBar">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                        <a class="nav-link" href="#"> Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="#"> Order </a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="#"> Learn More</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="#"> Log In</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+        {% include 'main-nav.html' %}
         <div class="row" id="hero-content">
             <div class="col col-xs-12 col-md-8 col-lg-6 align-self-center">
                 <div class="my-auto" id="hero-blurb">
                     <h1>Kiln-Dried Firewood</h1>
                     <h3>Pick-up or Delivery</h3><br>
-                    <a href="#" class="btn btn-secondary">Order</a><br><br><br><br>
+                    <a href="{% url 'order' %}" class="btn btn-secondary">Order</a><br><br><br><br>
                 </div>
             </div>
         </div>
