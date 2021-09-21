@@ -7,13 +7,25 @@
             <div class="col">
                 <div class="row no-gutters mx-auto my-auto" id="store-items">
                     <div class="col-md-4 store-item">
+                        <img src="{% static 'hardwoods.jpeg' %}" alt="" class="hidden-items active-hidden-img">
                         <h1 class="store-text">Hard Woods</h1>
+                        <p class="hidden-items active-hidden-items">
+                            Soft woods come from fast-growing trees like pine, larch and fir. They are easy to dry and cure, which is why they're cheaper. They are faster-burning and easier to light than hardwoods. Uncured softwoods create unwanted sparks and smoke, but Bark Farmers sell only reliable, kiln-dried softwoods.
+                        </p>
                     </div>
                     <div class="col-md-4 store-item">
+                        <img src="{% static 'softwoods.jpg' %}" alt="" class="hidden-items active-hidden-img">
                         <h1 class="store-text">Soft Woods</h1>
+                        <p class="hidden-items active-hidden-items">
+                            Soft woods come from fast-growing trees like pine, larch and fir. They are easy to dry and cure, which is why they're cheaper. They are faster-burning and easier to light than hardwoods. Uncured softwoods create unwanted sparks and smoke, which is why Bark Farmers sells only reliable, kiln-dried softwoods.
+                        </p>
                     </div>
                     <div class="col-md-4 store-item">
+                        <img src="{% static 'cookingwoods.jpg' %}" alt="" class="hidden-items active-hidden-img">
                         <h1 class="store-text">Cooking Woods</h1>
+                        <p class="hidden-items active-hidden-items">
+                            Soft woods come from fast-growing trees like pine, larch and fir. They are easy to dry and cure, which is why they're cheaper. They are faster-burning and easier to light than hardwoods. Uncured softwoods create unwanted sparks and smoke, but Bark Farmers sell only reliable, kiln-dried softwoods.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -21,32 +33,69 @@
     </div>
     <script>        
         let storeItems = document.getElementById("store-items").children; 
+        var vertical = false;
 
         // Reorient is used by the event listeners to re-orient the bootstrap layout to a vertical one if the screen is taller than wide (i.e. tablets)
         let reOrient = function() {
             if (window.innerHeight > window.innerWidth) {
                 for (let i = 0; i < storeItems.length; i++){
-                    storeItems[i].setAttribute("class", "col-md-12 store-item-portrait")
-                    storeItems[i].firstElementChild.setAttribute("class", "store-text-portrait")
+                    vertical = true;
+                    storeItems[i].setAttribute("class", "col-md-12 store-item-portrait");
+                    storeItems[i].firstElementChild.nextElementSibling.setAttribute("class", "store-text-portrait");
                 }
             } else {
                 for (let i = 0; i < storeItems.length; i++){
-                    storeItems[i].setAttribute("class", "col-md-4 store-item")
-                    storeItems[i].firstElementChild.setAttribute("class", "store-text")
+                    vertical = false;
+                    storeItems[i].setAttribute("class", "col-md-4 store-item");
+                    storeItems[i].firstElementChild.nextElementSibling.setAttribute("class", "store-text");
                 }
             }
         }
         window.addEventListener("resize", reOrient);
         window.addEventListener("load", reOrient);
-        console.log(storeItems)
 
+        // Minimizing and displaying store items
         for (let t = 0; t < storeItems.length; t++) {
             storeItems[t].addEventListener("click", function(event) {
-                console.log(event.target)
-                event.currentTarget.setAttribute("class", "col-md-10 store-item")
-                for (let x = 0; x < storeItems.length; x++) {
-                    if (storeItems[x] !== event.target) {
-                        storeItems[x].setAttribute("class", "col-md-1 store-item")
+                // Portrait orientation
+                if (vertical === true) {
+                    console.log(vertical)
+                    event.currentTarget.classList.add("active-store-item", "active-store-item-portrait");
+                    event.currentTarget.firstElementChild.nextElementSibling.classList.add("active-text");
+                    event.currentTarget.firstElementChild.classList.remove("hidden-items");
+                    event.currentTarget.lastElementChild.classList.remove("hidden-items");
+                    event.currentTarget.firstElementChild.classList.add("active-hidden-img-portrait");
+
+                    // The following for loop minimizes the items not clicked on
+                    for (let x = 0; x < storeItems.length; x++) {
+                        if (storeItems[x] !== event.target) {
+                            storeItems[x].setAttribute("class", "col-md-12 store-item minimized-store-item-portrait");
+                            storeItems[x].firstElementChild.classList.add("hidden-items");
+                            storeItems[x].firstElementChild.nextElementSibling.classList.remove("active-text");
+                            storeItems[x].lastElementChild.classList.add("hidden-items");
+                        }
+                    }
+
+                // Landscape orientation
+                } else {
+                    console.log(vertical)
+                    event.currentTarget.classList.add("active-store-item", "col-md-10");
+                    event.currentTarget.firstElementChild.nextElementSibling.classList.add("active-text");
+                    event.currentTarget.firstElementChild.nextElementSibling.classList.remove("minimized-text");
+                    event.currentTarget.classList.remove("col-md-1", "col-md-4");
+                    event.currentTarget.firstElementChild.classList.remove("hidden-items");
+                    event.currentTarget.lastElementChild.classList.remove("hidden-items");
+                    event.currentTarget.style.background = "null";
+
+                    // The following for loop minimizes the items not clicked on
+                    for (let x = 0; x < storeItems.length; x++) {
+                        if (storeItems[x] !== event.target) {
+                            storeItems[x].setAttribute("class", "col-md-1 store-item");
+                            storeItems[x].firstElementChild.classList.add("hidden-items");
+                            storeItems[x].firstElementChild.nextElementSibling.classList.add("minimized-text");
+                            storeItems[x].firstElementChild.nextElementSibling.classList.remove("active-text");
+                            storeItems[x].lastElementChild.classList.add("hidden-items");
+                        }
                     }
                 }
             });
