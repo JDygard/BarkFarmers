@@ -9,3 +9,7 @@ def index(request):
 def order(request):
     """ View returns order page"""
     return render(request, 'home/order.html')
+
+def commercial(request):
+    """ View returns commercial customer page """
+    return render(request, 'home/commercial.html')
