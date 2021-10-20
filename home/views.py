@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from .forms import HardwoodOrder
 
 # Create your views here.
 
@@ -8,7 +10,13 @@ def index(request):
 
 def order(request):
     """ View returns order page"""
-    return render(request, 'home/order.html')
+    if request.method == "POST":
+        form = HardwoodOrder(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect("/thanks/")
+    else:
+        form = HardwoodOrder()
+    return render(request, 'home/order.html', {"form": form})
 
 def commercial(request):
     """ View returns commercial customer page """

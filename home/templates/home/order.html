@@ -17,7 +17,29 @@
                             </div>
                             <div class="col-lg-6 col-md-12 hidden-items">
                                 <form action="">
-                                    <h1 class="formstuff">THIS IS IT</h1>
+                                    <form action="order-form" method="POST">
+                                        {% csrf_token %}
+
+                                        {{ form.non_field_errors }}
+
+                                        {% for hidden_field in form.hidden_fields %}
+                                            {{ hidden_field.errors }}
+                                            {{ hidden_field }}
+                                        {% endfor %}
+                                        <table>
+                                            {% for field in form.visible_fields %}
+                                                <tr>
+                                                    <th>{{ field.label_tag }}</th>
+                                                    <td>
+                                                        {{ field.errors }}
+                                                        {{ field }}
+                                                        {{ field.help_text }}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </table>
+                                        <input type="submit" value="Submit">
+                                    </form>
                                 </form>
                             </div>
                         </div>
@@ -228,49 +250,6 @@
                     let form = event.target.parentNode.lastElementChild
                     form.classList.remove("hidden-items");
                 }
-
-            
-
-                /* Portrait orientation
-                if (vertical === true) {
-                    event.currentTarget.classList.add("active-store-item", "active-store-item-portrait");
-                    event.currentTarget.firstElementChild.nextElementSibling.classList.add("active-text");
-                    event.currentTarget.firstElementChild.classList.remove("hidden-items");
-                    event.currentTarget.lastElementChild.classList.remove("hidden-items");
-                    event.currentTarget.firstElementChild.classList.add("active-hidden-img-portrait");
-                    event.currentTarget.lastElementChild.classList.add("hidden-paragraph-portrait");
-
-                    // The following for loop minimizes the items not clicked on
-                    for (let x = 0; x < storeItems.length; x++) {
-                        if (storeItems[x] !== event.target) {
-                            storeItems[x].setAttribute("class", "col-md-12 store-item minimized-store-item-portrait");
-                            storeItems[x].firstElementChild.classList.add("hidden-items");
-                            storeItems[x].firstElementChild.nextElementSibling.classList.remove("active-text");
-                            storeItems[x].lastElementChild.classList.add("hidden-items");
-                        }
-                    }
-
-                // Landscape orientation
-                } else {
-                    event.currentTarget.classList.add("active-store-item", "col-md-10");
-                    event.currentTarget.firstElementChild.nextElementSibling.classList.add("active-text");
-                    event.currentTarget.firstElementChild.nextElementSibling.classList.remove("minimized-text");
-                    event.currentTarget.classList.remove("col-md-1", "col-md-4");
-                    event.currentTarget.firstElementChild.classList.remove("hidden-items");
-                    event.currentTarget.lastElementChild.classList.remove("hidden-items");
-                    event.currentTarget.style.background = "null";
-
-                    // The following for loop minimizes the items not clicked on
-                    for (let x = 0; x < storeItems.length; x++) {
-                        if (storeItems[x] !== event.target) {
-                            storeItems[x].parentNode.parentNode.setAttribute("class", "col-md-1 store-item");
-                            storeItems[x].firstElementChild.classList.add("hidden-items");
-                            storeItems[x].firstElementChild.nextElementSibling.classList.add("minimized-text");
-                            storeItems[x].firstElementChild.nextElementSibling.classList.remove("active-text");
-                            storeItems[x].lastElementChild.classList.add("hidden-items");
-                        }
-                    }
-                }*/
             });
         };
 
