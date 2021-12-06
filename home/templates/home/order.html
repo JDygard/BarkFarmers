@@ -15,31 +15,45 @@
                                     Hardwoods come from slow-growing trees like oak, maple, cherry and birch. They make ideal firewood, burning longer and hotter than softwoods. On average, you'll use twice as much softwood to get the same heat from hardwoods! They are more expensive due to the much longer time it takes to mature as a tree, and dry in the kiln.
                                 </p>
                             </div>
-                            <div class="col-lg-6 col-md-12 hidden-items">
-                                <form action="">
-                                    <form action="order-form" method="POST">
-                                        {% csrf_token %}
-
-                                        {{ form.non_field_errors }}
-
-                                        {% for hidden_field in form.hidden_fields %}
-                                            {{ hidden_field.errors }}
-                                            {{ hidden_field }}
-                                        {% endfor %}
-                                        <table>
-                                            {% for field in form.visible_fields %}
-                                                <tr>
-                                                    <th>{{ field.label_tag }}</th>
-                                                    <td>
-                                                        {{ field.errors }}
-                                                        {{ field }}
-                                                        {{ field.help_text }}
-                                                    </td>
-                                                </tr>
-                                            {% endfor %}
-                                        </table>
-                                        <input type="submit" value="Submit">
-                                    </form>
+                            <div class="col-lg-6 col-md-12 hidden-items text-black px-4">
+                                <form action="" class="form" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-row my-auto">
+                                        <div class="col-12">
+                                            <p><strong>Pickup or Delivery?</strong></p>
+                                            <select name="delivery_method" class="form-control rounded-0" id="id_delivery_method">
+                                                <option value="" selected>Select delivery method</option>
+                                                <option value="pickup">Pick up from Bark Farmers</option>
+                                                <option value="delivery">My Home Delivery</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <p><strong>How do you want your wood?</strong></p>
+                                            <select name="product_type" class="form-control rounded-0" id="id_product_type">
+                                                <option value="bag" selected>Construction Bag</option>
+                                                <option value="stacked">Hand-stacked</option>
+                                                <option value="bundles">Bundles</option>
+                                                <option value="pile">Loose pile</option>
+                                            </select>
+                                        </div>
+                                        <p><strong>How much do you want?</strong></p>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="decrement-qty btn-dark btn-sm btn-black rounded-0" data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                                    <span><i class="fas fa-minus fa-sm"></i></span>
+                                                </button>
+                                            </div>
+                                            <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" class="form-control qty_input">
+                                            <div class="input-group-append">
+                                                <button class="increment-qty btn-dark btn-sm btn-black rounded-0" data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                                    <span><i class="fas fa-plus fa-sm"></i></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                        </div>
+                                    </div>
+                                    {% include 'checkout.html' %}
                                 </form>
                             </div>
                         </div>
@@ -54,9 +68,6 @@
                                 </p>
                             </div>
                             <div class="col-lg-6 col-md-12 hidden-items">
-                                <form action="">
-                                    <h1 class="formstuff">THIS IS IT</h1>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -70,9 +81,6 @@
                                 </p>
                             </div>
                             <div class="col-lg-6 col-md-12 hidden-items">
-                                <form action="">
-                                    <h1 class="formstuff">THIS IS IT</h1>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -80,7 +88,32 @@
             </div>
         </div>
     </div>
-    <script>        
+    <script type="text/javascript">
+        function handleEnableDisable(itemId) {
+            var currentValue = parseInt($(`#id_qty_${itemId}`).val())
+            var minusDisabled = currentValue < 2;
+            var plusDisabled = currentValue > 98;
+            $(`#decrement-qty_${itemId}`).prop("disabled", minusDisabled);
+            $(`#increment-qty_${itemId}`).prop("disabled", plusDisabled);
+        }
+        $('.increment-qty').click(function(e) {
+            e.preventDefault();
+            var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+            var currentValue = parseInt($(closestInput).val());
+            $(closestInput).val(currentValue + 1);
+            var itemId = $(this).data("item_id");
+            handleEnableDisable(itemId);
+        });
+    
+        $('.decrement-qty').click(function(e){
+            e.preventDefault();
+            var closestInput = $(this).closest('.input-group').find(".qty_input")[0];
+            var currentValue = parseInt($(closestInput).val());
+            $(closestInput).val(currentValue - 1);
+            var itemId = $(this).data("item_id");
+            handleEnableDisable(itemId);
+        })
+
         var storeItems = document.getElementsByClassName("info-section"); 
         var vertical;
 
@@ -132,6 +165,7 @@
                 }
             }
         }
+
         window.addEventListener("load", function() {
             if (window.innerHeight > window.innerWidth){
                 vertical = true;
@@ -145,8 +179,8 @@
         // Thanks to https://www.javascripttutorial.net/javascript-dom/javascript-siblings/ for this
         // Get siblings function
         let getSiblings = function (e) {
-            // for collecting siblings
-            let siblings = []; 
+            // for collecting siblingsza
+            let siblings = [];
             // if no parent, return no sibling
             if(!e.parentNode) {
                 return siblings;

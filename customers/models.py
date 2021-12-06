@@ -36,8 +36,13 @@ class Invoice(models.Model):
 
 
 class Product(models.Model):
-    product_name = models.CharField(max_length=50, default="PRODUCT")
-    product_price = models.DecimalField(max_digits=5, decimal_places=2, blank=False, null=True)
+    name = models.CharField(max_length=50, default="PRODUCT")
+    price = models.DecimalField(max_digits=5, decimal_places=2, blank=False, null=True)
+    loose_qty = models.IntegerField
+    bundled_quantity = models.IntegerField
+
+    def __str__(self):
+        return self.name
 
 
 class Stock(models.Model):
