@@ -258,6 +258,10 @@ table {
     transition: height .3s ease;
 }
 
+#quantity_select, #checkout-section {
+    display: none;
+}
+
 /* Universal elements styling */
 
 /* Button */
