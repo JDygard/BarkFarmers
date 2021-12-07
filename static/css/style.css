@@ -177,6 +177,7 @@ table {
     text-align: justify;
     text-indent: 30px;
     text-justify: auto;
+    pointer-events: none;
 }
 
 .formstuff {
@@ -184,6 +185,7 @@ table {
 }
 
 .hidden-paragraph-portrait {
+    pointer-events: none;
     color: black;
     width: auto;
     height: 40%;
@@ -258,8 +260,32 @@ table {
     transition: height .3s ease;
 }
 
-#quantity_select, #checkout-section {
+#quantity_select_hard, #quantity_select_soft{
     display: none;
+}
+
+.checkout-btn {
+    background-color: black;
+    color: white;
+}
+
+.checkout-box {
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+    width: 100%
+}
+
+.form-box {
+    position: relative;
+    overflow: scroll;
+    max-height: 100%;
+    padding-left: 0 !important;
+    margin-right: 30px;
+}
+
+#checkout_section_hard, #checkout_section_soft {
+    display: none;    
 }
 
 /* Universal elements styling */

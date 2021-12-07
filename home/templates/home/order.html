@@ -15,13 +15,13 @@
                                     Hardwoods come from slow-growing trees like oak, maple, cherry and birch. They make ideal firewood, burning longer and hotter than softwoods. On average, you'll use twice as much softwood to get the same heat from hardwoods! They are more expensive due to the much longer time it takes to mature as a tree, and dry in the kiln.
                                 </p>
                             </div>
-                            <div class="col-lg-6 col-md-12 hidden-items text-black px-4">
+                            <div class="col-lg-6 col-md-12 hidden-items text-black pl-0 form-box">
                                 <form action="" class="form" method="POST">
                                     {% csrf_token %}
                                     <div class="form-row my-auto">
                                         <div class="col-12">
                                             <p><strong>Pickup or Delivery?</strong></p>
-                                            <select name="delivery_method" class="form-control rounded-0" id="id_delivery_method">
+                                            <select name="delivery_method" class="form-control rounded-0" id="id_delivery_method_hard">
                                                 <option value="" selected>Select delivery method</option>
                                                 <option value="pickup">Pick up from Bark Farmers</option>
                                                 <option value="delivery">My Home Delivery</option>
@@ -29,15 +29,15 @@
                                         </div>
                                         <div class="col-12">
                                             <p><strong>How do you want your wood?</strong></p>
-                                            <select name="product_type" class="form-control rounded-0" id="id_product_type">
+                                            <select name="product_type" class="form-control rounded-0" id="id_product_type_hard">
                                                 <option value="" selected>Select a delivery type</option>
                                                 <option value="bag">Construction Bag</option>
-                                                <option value="stacked">Hand-stacked</option>
+                                                <option value="stacked" id="stacked_option_hard">Hand-stacked</option>
                                                 <option value="bundles">Bundles</option>
                                                 <option value="pile">Loose pile</option>
                                             </select>
                                         </div>
-                                        <div id="quantity_select">
+                                        <div id="quantity_select_hard">
                                             <p><strong>How much do you want?</strong></p>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
@@ -52,14 +52,15 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            <button class="btn-dark btn-black rounded-0 continue-btn">
+                                            <p><strong data-toggle="tooltip" data-placement="bottom" title="I dunno">ricks</strong></p>
+                                            <a class="btn-dark btn-black rounded-0" id="continue_btn_hard">
                                                 <span>Continue<i class="fas fa-angle-double-down"></i></span>
-                                            </button>
+                                            </a>
                                         </div>
                                         <div class="col-12">
                                         </div>
                                     </div>
-                                    <div id="checkout-section">
+                                    <div id="checkout_section_hard">
                                         {% include 'checkout.html' %}
                                     </div>
                                 </form>
@@ -75,7 +76,55 @@
                                     Softwoods come from fast-growing trees like pine, larch and fir. They are easy to dry and cure, which is why they're cheaper. They are faster-burning and easier to light than hardwoods. Uncured softwoods create unwanted sparks and smoke, which is why Bark Farmers sells only reliable, kiln-dried softwoods.
                                 </p>
                             </div>
-                            <div class="col-lg-6 col-md-12 hidden-items">
+                            <div class="col-lg-6 col-md-12 hidden-items text-black pl-0 form-box">
+                                <form action="" class="form" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-row my-auto">
+                                        <div class="col-12">
+                                            <p><strong>Pickup or Delivery?</strong></p>
+                                            <select name="delivery_method" class="form-control rounded-0" id="id_delivery_method_soft">
+                                                <option value="" selected>Select delivery method</option>
+                                                <option value="pickup">Pick up from Bark Farmers</option>
+                                                <option value="delivery">My Home Delivery</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <p><strong>How do you want your wood?</strong></p>
+                                            <select name="product_type" class="form-control rounded-0" id="id_product_type_soft">
+                                                <option value="" selected>Select a delivery type</option>
+                                                <option value="bag">Construction Bag</option>
+                                                <option value="stacked" id="stacked_option_soft">Hand-stacked</option>
+                                                <option value="bundles">Bundles</option>
+                                                <option value="pile">Loose pile</option>
+                                            </select>
+                                        </div>
+                                        <div id="quantity_select_soft">
+                                            <p><strong>How much do you want?</strong></p>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <button class="decrement-qty btn-dark btn-sm btn-black rounded-0" data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                                        <span><i class="fas fa-minus fa-sm"></i></span>
+                                                    </button>
+                                                </div>
+                                                <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" class="form-control qty_input">
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty btn-dark btn-sm btn-black rounded-0" data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                                        <span><i class="fas fa-plus fa-sm"></i></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <p><strong data-toggle="tooltip" data-placement="bottom" title="I dunno">ricks</strong></p>
+                                            <a class="btn-dark btn-black rounded-0" id="continue_btn_soft">
+                                                <span>Continue<i class="fas fa-angle-double-down"></i></span>
+                                            </a>
+                                        </div>
+                                        <div class="col-12">
+                                        </div>
+                                    </div>
+                                    <div id="checkout_section_soft">
+                                        {% include 'checkout.html' %}
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

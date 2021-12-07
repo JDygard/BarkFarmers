@@ -1,23 +1,57 @@
-// Controlling progressive revelation in the order form
-var delivery_select = document.getElementById('id_delivery_method');
-var type_select = document.getElementById('id_product_type');
-var quantity_select = document.getElementById('quantity_select');
-
-delivery_select.addEventListener('change', function () {
-    if (delivery_select.value !== "" && type_select.value !== "") {
-        console.log(delivery_select)
-        quantity_select.style.display = "block";
-    }
-});
-
-type_select.addEventListener('change', function() {
-    if (delivery_select.value !== "" && type_select.value !== "") {
-        quantity_select.style.display = "block";
-    }
-});
+// From the bootstrap documentation
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
 
 // Now we need the continue-btn to open the checkout form
 // I'm thinking we can actually tie this into the code for opening the little windows. We can parse through the form that gets opened to set up the triggers.
+
+// Affect grand-total readout
+
+var element_IDs = ["_soft", "_hard"]
+for (i = 0; i < element_IDs.length; i++) {
+    let delivery_select = document.getElementById('id_delivery_method' + element_IDs[i]);
+    let type_select = document.getElementById('id_product_type' + element_IDs[i]);
+    let quantity_select = document.getElementById('quantity_select' + element_IDs[i]);
+    let stacked_option = document.getElementById("stacked_option" + element_IDs[i]);
+    let continue_btn = document.getElementById("continue_btn" + element_IDs[i])
+    let checkout_section = document.getElementById("checkout_section" + element_IDs[i])
+
+    delivery_select.addEventListener('change', function () {
+
+        // Reveal the next step when an option is selected
+        if (delivery_select.value !== "" && type_select.value !== "") {
+            quantity_select.style.display = "block";
+        }
+    
+        // Remove "hand-stacked" from type when pickup is selected
+        if (delivery_select.value == "pickup") {
+            stacked_option.setAttribute("disabled", false)
+        } else {
+            stacked_option.removeAttribute("disabled")
+        }
+    });
+
+
+    type_select.addEventListener('change', function() {
+        if (delivery_select.value !== "" && type_select.value !== "") {
+            quantity_select.style.display = "block";
+        }
+        // Alter readout on quantity
+    });
+
+    continue_btn.addEventListener("click", function() {
+        // Minimize other options
+        delivery_select.previousElementSibling.style.display = "none"
+        type_select.previousElementSibling.style.display = "none"
+        quantity_select.firstElementChild.style.display = "none"
+        continue_btn.style.display = "none"
+        // Reveal checkout
+        checkout_section.style.display = "block"
+    })
+};
+
+
 
 // Controlling the number field in the order form
 function handleEnableDisable(itemId) {
