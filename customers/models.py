@@ -38,6 +38,7 @@ class Invoice(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=50, default="PRODUCT")
     price = models.DecimalField(max_digits=5, decimal_places=2, blank=False, null=True)
+    weight = models.DecimalField(max_digits=7, decimal_places=2, blank=False, null=True)
     loose_qty = models.IntegerField
     bundled_quantity = models.IntegerField
 

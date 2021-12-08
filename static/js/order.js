@@ -3,11 +3,19 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   })
 
-// Now we need the continue-btn to open the checkout form
-// I'm thinking we can actually tie this into the code for opening the little windows. We can parse through the form that gets opened to set up the triggers.
+// JS for cooking wood
+let delivery_select_cooking = document.getElementById("id_delivery_method_cooking")
+let quantity_select_cooking = document.getElementById("quantity_select_cooking")
+let cooking_order = function() {
+    if (delivery_select_cooking !== "") {
+        quantity_select_cooking.style.height = "auto";
+        quantity_select_cooking.style.opacity = 1;
+    }
+}
 
-// Affect grand-total readout
+delivery_select_cooking.addEventListener("click", cooking_order())
 
+// For loop that builds the JS for the hard and soft woods forms
 var element_IDs = ["_soft", "_hard"]
 for (i = 0; i < element_IDs.length; i++) {
     let delivery_select = document.getElementById('id_delivery_method' + element_IDs[i]);
@@ -21,7 +29,8 @@ for (i = 0; i < element_IDs.length; i++) {
 
         // Reveal the next step when an option is selected
         if (delivery_select.value !== "" && type_select.value !== "") {
-            quantity_select.style.display = "block";
+            quantity_select.style.height = "auto";
+            quantity_select.style.opacity = 1;
         }
     
         // Remove "hand-stacked" from type when pickup is selected
@@ -35,19 +44,26 @@ for (i = 0; i < element_IDs.length; i++) {
 
     type_select.addEventListener('change', function() {
         if (delivery_select.value !== "" && type_select.value !== "") {
-            quantity_select.style.display = "block";
+            quantity_select.style.height = "auto";
+            quantity_select.style.opacity = 1;
         }
         // Alter readout on quantity
     });
 
     continue_btn.addEventListener("click", function() {
         // Minimize other options
-        delivery_select.previousElementSibling.style.display = "none"
-        type_select.previousElementSibling.style.display = "none"
-        quantity_select.firstElementChild.style.display = "none"
-        continue_btn.style.display = "none"
+        delivery_select.previousElementSibling.style.height = 0;
+        type_select.previousElementSibling.style.height = 0;
+        quantity_select.firstElementChild.style.height = 0;
+        continue_btn.style.height = 0;
+        delivery_select.previousElementSibling.style.opacity = 0;
+        type_select.previousElementSibling.style.opacity = 0;
+        quantity_select.firstElementChild.style.opacity = 0;
+        continue_btn.style.opacity = 0;
         // Reveal checkout
-        checkout_section.style.display = "block"
+        checkout_section.style.height = "auto";
+        checkout_section.style.opacity = 1;
+        checkout_section.style.overflow = "scroll";
     })
 };
 

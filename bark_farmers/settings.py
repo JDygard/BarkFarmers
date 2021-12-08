@@ -167,3 +167,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+BAG_DEPOSIT = 20.00
+DELIVERY_CHARGE_STANDARD = 29.99
+DELIVERY_CHARGE_JUMBO = 49.99
+JUMBO_DELIVERY_THRESHOLD = 3000
+STACKING_CHARGE = 49.99

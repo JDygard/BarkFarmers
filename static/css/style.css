@@ -260,8 +260,16 @@ table {
     transition: height .3s ease;
 }
 
-#quantity_select_hard, #quantity_select_soft{
-    display: none;
+#quantity_select_hard, 
+#quantity_select_soft,
+#quantity_select_cooking,
+#checkout_section_cooking, 
+#checkout_section_hard, 
+#checkout_section_soft {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 1s ease-out;
 }
 
 .checkout-btn {
@@ -282,10 +290,6 @@ table {
     max-height: 100%;
     padding-left: 0 !important;
     margin-right: 30px;
-}
-
-#checkout_section_hard, #checkout_section_soft {
-    display: none;    
 }
 
 /* Universal elements styling */
