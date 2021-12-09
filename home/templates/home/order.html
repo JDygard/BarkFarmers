@@ -6,6 +6,8 @@
         <div class="row align-items-center mx-auto" id="storefront">
             <div class="col">
                 <div class="row no-gutters mx-auto my-auto" id="store-items">
+
+                    <!-- Hardwoods order section -->
                     <div class="col-md-4 store-item">
                         <div class="row hidden-rows">
                             <div class="col info-section">
@@ -19,7 +21,7 @@
                                 <form action="" class="form" method="POST">
                                     {% csrf_token %}
                                     <div class="form-row my-auto">
-                                        <input id="wood-type" type="hidden" value="hardwood">
+                                        <input id="wood_type_hard" type="hidden" value="hardwood">
                                         <div class="col-12">
                                             <p><strong>Pickup or Delivery?</strong></p>
                                             <select name="delivery_method" class="form-control rounded-0" id="id_delivery_method_hard">
@@ -64,10 +66,18 @@
                                     <div id="checkout_section_hard">
                                         {% include 'checkout.html' %}
                                     </div>
+                                    <div class="grand-total">
+                                        <p id="stacking_hard"></p>
+                                        <p id="deposit_hard"></p>
+                                        <p id="delivery_hard"></p>
+                                        <p>Total:<strong id="grand_total_hard">$0.00</strong></p>
+                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Softwoods order section -->
                     <div class="col-md-4 store-item">
                         <div class="row hidden-rows">
                             <div class="col info-section">
@@ -81,7 +91,7 @@
                                 <form action="" class="form" method="POST">
                                     {% csrf_token %}
                                     <div class="form-row my-auto">
-                                        <input id="wood-type" type="hidden" value="softwood">
+                                        <input id="wood_type_soft" type="hidden" value="softwood">
                                         <div class="col-12">
                                             <p><strong>Pickup or Delivery?</strong></p>
                                             <select name="delivery_method" class="form-control rounded-0" id="id_delivery_method_soft">
@@ -126,10 +136,17 @@
                                     <div id="checkout_section_soft">
                                         {% include 'checkout.html' %}
                                     </div>
+                                    <div class="grand-total">
+                                        <p></p>
+                                        <p></p>
+                                        <p><strong id="grand_total_soft">$0.00</strong></p>
+                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Cooking woods order section -->
                     <div class="col-md-4 store-item">
                         <div class="row hidden-rows">
                             <div class="col info-section">
@@ -178,6 +195,9 @@
                                     <div id="checkout_section_soft">
                                         {% include 'checkout.html' %}
                                     </div>
+                                    <div>
+                                        <p><strong id="grand-total-cook">$0.00</strong></p>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -193,7 +213,11 @@
                 "weight": {{ product.weight }},
             }
         {% endfor %}
-        console.log(hardwood)
+        var bagDeposit = {{ shipping_data.bag_deposit }}
+        var deliveryCharge = {{ shipping_data.delivery_charge_standard }}
+        var deliveryJumbo = {{ shipping_data.delivery_charge_jumbo }}
+        var jumboThreshold = {{ shipping_data.jumbo_delivery_threshold }}
+        var stackingCharge = {{ shipping_data.stacking_charge }}
     </script>
     <script src="{% static 'js/order.js' %}"></script>
 {% endblock %}

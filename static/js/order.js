@@ -13,52 +13,86 @@ let cooking_order = function() {
     }
 }
 
-delivery_select_cooking.addEventListener("click", cooking_order())
+delivery_select_cooking.addEventListener("click", cooking_order)
+
+// This function is called every time the user changes an option to recalculate the price of the order
+var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal, stackingField, depositField, deliveryField, totalField) {
+    let total = 0;
+    let delivery = 0;
+    let deposit = 0;
+    let stacking = 0;
+
+    if (deliverySelect.value = "delivery") {
+        delivery = deliveryCharge;
+    }
+
+    if (typeSelect.value = "bag") {
+        deposit = bagDeposit;
+    } else if (typeSelect.value = "stacked") {
+        stacking = stackingCharge;
+    }
+
+    if (woodSelect.value = "hardwood") {
+        total = hardwood.price * quantityTotal.value;
+    } else if (woodSelect.value = "softwood") {
+        total = softwood.price * quantityTotal.value;
+    }
+    totalField.innerHTML = total;
+}
 
 // For loop that builds the JS for the hard and soft woods forms
 var element_IDs = ["_soft", "_hard"]
 for (i = 0; i < element_IDs.length; i++) {
-    let delivery_select = document.getElementById('id_delivery_method' + element_IDs[i]);
-    let type_select = document.getElementById('id_product_type' + element_IDs[i]);
-    let quantity_select = document.getElementById('quantity_select' + element_IDs[i]);
+    // Defining the select elements
+    let deliverySelect = document.getElementById('id_delivery_method' + element_IDs[i]);
+    let typeSelect = document.getElementById('id_product_type' + element_IDs[i]);
+    let woodType = document.getElementById('wood_type' + element_IDs[i]);
+
+    // Defining the stacked option
     let stacked_option = document.getElementById("stacked_option" + element_IDs[i]);
+
+    // Defining various functional elements
     let continue_btn = document.getElementById("continue_btn" + element_IDs[i])
     let checkout_section = document.getElementById("checkout_section" + element_IDs[i])
+    let quantitySelect = document.getElementById('quantity_select' + element_IDs[i]);
+    let quantityTotal = quantitySelect.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling
+    
+    // Defining the bag breakdown
+    let grandTotal = document.getElementById("grand_total" + element_IDs[i])
+    let depositParagraph = document.getElementById("deposit" + element_IDs[i])
+    let deliveryParagraph = document.getElementById("delivery" + element_IDs[i])
+    let stackingParagraph = document.getElementById("stacking" + element_IDs[i])
 
-    delivery_select.addEventListener('change', function () {
-
+    var updateOnChange = function() {
+        // Adjust total
+        updateTotal(woodType, deliverySelect, typeSelect, quantityTotal, stackingParagraph, depositParagraph, deliveryParagraph, grandTotal)
+        
         // Reveal the next step when an option is selected
-        if (delivery_select.value !== "" && type_select.value !== "") {
-            quantity_select.style.height = "auto";
-            quantity_select.style.opacity = 1;
+        if (deliverySelect.value !== "" && typeSelect.value !== "") {
+            quantitySelect.style.height = "auto";
+            quantitySelect.style.opacity = 1;
         }
     
         // Remove "hand-stacked" from type when pickup is selected
-        if (delivery_select.value == "pickup") {
+        if (deliverySelect.value == "pickup") {
             stacked_option.setAttribute("disabled", false)
         } else {
             stacked_option.removeAttribute("disabled")
         }
-    });
+    }
 
-
-    type_select.addEventListener('change', function() {
-        if (delivery_select.value !== "" && type_select.value !== "") {
-            quantity_select.style.height = "auto";
-            quantity_select.style.opacity = 1;
-        }
-        // Alter readout on quantity
-    });
-
+    deliverySelect.addEventListener('change', updateOnChange);
+    typeSelect.addEventListener('change', updateOnChange);
+    quantityTotal.addEventListener('change', updateOnChange);
     continue_btn.addEventListener("click", function() {
         // Minimize other options
-        delivery_select.previousElementSibling.style.height = 0;
-        type_select.previousElementSibling.style.height = 0;
-        quantity_select.firstElementChild.style.height = 0;
+        deliverySelect.previousElementSibling.style.height = 0;
+        typeSelect.previousElementSibling.style.height = 0;
+        quantitySelect.firstElementChild.style.height = 0;
         continue_btn.style.height = 0;
-        delivery_select.previousElementSibling.style.opacity = 0;
-        type_select.previousElementSibling.style.opacity = 0;
-        quantity_select.firstElementChild.style.opacity = 0;
+        deliverySelect.previousElementSibling.style.opacity = 0;
+        typeSelect.previousElementSibling.style.opacity = 0;
+        quantitySelect.firstElementChild.style.opacity = 0;
         continue_btn.style.opacity = 0;
         // Reveal checkout
         checkout_section.style.height = "auto";

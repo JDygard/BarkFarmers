@@ -286,10 +286,24 @@ table {
 
 .form-box {
     position: relative;
+    padding-left: 0 !important;
+    max-height: 100%;
+    margin-right: 30px;
+}
+
+.form {
     overflow: scroll;
     max-height: 100%;
-    padding-left: 0 !important;
-    margin-right: 30px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+}
+
+.grand-total {
+    position:absolute;
+    bottom:0;
+    width:95%;
+    height:40px;   /* Height of the footer */
+    background:#e0e0e0
 }
 
 /* Universal elements styling */
