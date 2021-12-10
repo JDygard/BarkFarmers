@@ -16,28 +16,65 @@ let cooking_order = function() {
 delivery_select_cooking.addEventListener("click", cooking_order)
 
 // This function is called every time the user changes an option to recalculate the price of the order
-var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal, stackingField, depositField, deliveryField, totalField) {
+var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal, quantitySelect, stackingField, depositField, deliveryField, woodField, totalField) {
+    // establish variables
+
     let total = 0;
     let delivery = 0;
     let deposit = 0;
     let stacking = 0;
 
-    if (deliverySelect.value = "delivery") {
+    // calculate fees and total
+
+    if (deliverySelect.value == "delivery") {
         delivery = deliveryCharge;
     }
 
-    if (typeSelect.value = "bag") {
+    if (typeSelect.value == "bag") {
         deposit = bagDeposit;
-    } else if (typeSelect.value = "stacked") {
+        total += bagDeposit;
+    } else {
+        deposit = 0;
+    }
+    
+    if (typeSelect.value == "stacked") {
         stacking = stackingCharge;
+        total += stackingCharge;
+    } else {
+        stacking = 0;
     }
 
-    if (woodSelect.value = "hardwood") {
-        total = hardwood.price * quantityTotal.value;
-    } else if (woodSelect.value = "softwood") {
-        total = softwood.price * quantityTotal.value;
+    if (quantitySelect.style.opacity != 0) {
+        if (woodSelect.value == "hardwood") {
+            woodTotal = hardwood.price * quantityTotal.value;
+            total += woodTotal
+            woodField.innerHTML = quantityTotal.value + " rick hardwood: " + woodTotal.toFixed(2)
+        } else if (woodSelect.value == "softwood") {
+            total += softwood.price * quantityTotal.value;
+        }
     }
-    totalField.innerHTML = total;
+
+    // Adjust fields in the "grand total" section
+
+    if (delivery == 0) {
+        delivery.innerHTML = ""
+    } else {
+        deliveryField.innerHTML = "Delivery fee (standard): " + delivery.toFixed(2)
+    }
+
+    if (deposit == 0) {
+        deposit.innerHTML = ""
+    } else {
+        depositField.innerHTML = "Bag deposit: " + deposit.toFixed(2)
+    }
+
+    if (stacking == 0) {
+        stacking.innerHTML = ""
+    } else {
+        stackingField.innerHTML = "Hand stacking fee: " + stacking.toFixed(2)
+    }
+    
+    totalField.innerHTML = total.toFixed(2);
 }
 
 // For loop that builds the JS for the hard and soft woods forms
@@ -52,29 +89,34 @@ for (i = 0; i < element_IDs.length; i++) {
     let stacked_option = document.getElementById("stacked_option" + element_IDs[i]);
 
     // Defining various functional elements
-    let continue_btn = document.getElementById("continue_btn" + element_IDs[i])
-    let checkout_section = document.getElementById("checkout_section" + element_IDs[i])
+    let continue_btn = document.getElementById("continue_btn" + element_IDs[i]);
+    let checkout_section = document.getElementById("checkout_section" + element_IDs[i]);
     let quantitySelect = document.getElementById('quantity_select' + element_IDs[i]);
-    let quantityTotal = quantitySelect.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling
+    let quantityTotal = quantitySelect.firstElementChild.nextElementSibling.firstElementChild
     
     // Defining the bag breakdown
-    let grandTotal = document.getElementById("grand_total" + element_IDs[i])
-    let depositParagraph = document.getElementById("deposit" + element_IDs[i])
-    let deliveryParagraph = document.getElementById("delivery" + element_IDs[i])
-    let stackingParagraph = document.getElementById("stacking" + element_IDs[i])
+    let grandTotal = document.getElementById("grand_total" + element_IDs[i]);
+    let depositParagraph = document.getElementById("deposit" + element_IDs[i]);
+    let deliveryParagraph = document.getElementById("delivery" + element_IDs[i]);
+    let stackingParagraph = document.getElementById("stacking" + element_IDs[i]);
+    let woodParagraph = document.getElementById("wood_cost" + element_IDs[i]);
 
     var updateOnChange = function() {
         // Adjust total
-        updateTotal(woodType, deliverySelect, typeSelect, quantityTotal, stackingParagraph, depositParagraph, deliveryParagraph, grandTotal)
+        updateTotal(woodType, deliverySelect, typeSelect, quantityTotal, quantitySelect, stackingParagraph, depositParagraph, deliveryParagraph, woodParagraph, grandTotal)
         
         // Reveal the next step when an option is selected
         if (deliverySelect.value !== "" && typeSelect.value !== "") {
             quantitySelect.style.height = "auto";
             quantitySelect.style.opacity = 1;
+            updateTotal(woodType, deliverySelect, typeSelect, quantityTotal, quantitySelect, stackingParagraph, depositParagraph, deliveryParagraph, woodParagraph, grandTotal)
         }
     
         // Remove "hand-stacked" from type when pickup is selected
-        if (deliverySelect.value == "pickup") {
+        if (deliverySelect.value == "pickup" && typeSelect == "stacked"){
+            stacked_option.setAttribute("disabled", false)
+            typeSelect.value = ""
+        } else if (deliverySelect.value == "pickup") {
             stacked_option.setAttribute("disabled", false)
         } else {
             stacked_option.removeAttribute("disabled")
@@ -83,7 +125,10 @@ for (i = 0; i < element_IDs.length; i++) {
 
     deliverySelect.addEventListener('change', updateOnChange);
     typeSelect.addEventListener('change', updateOnChange);
-    quantityTotal.addEventListener('change', updateOnChange);
+    quantityTotal.addEventListener('input', updateOnChange);
+    deliverySelect.addEventListener('load', updateOnChange);
+    typeSelect.addEventListener('load', updateOnChange);
+    quantityTotal.addEventListener('load', updateOnChange);
     continue_btn.addEventListener("click", function() {
         // Minimize other options
         deliverySelect.previousElementSibling.style.height = 0;
@@ -94,6 +139,11 @@ for (i = 0; i < element_IDs.length; i++) {
         typeSelect.previousElementSibling.style.opacity = 0;
         quantitySelect.firstElementChild.style.opacity = 0;
         continue_btn.style.opacity = 0;
+        // Disappear the line items:
+        stackingParagraph.innerHTML = "";
+        depositParagraph.innerHTML = "";
+        deliveryParagraph.innerHTML = "";
+        woodParagraph.innerHTML = "";
         // Reveal checkout
         checkout_section.style.height = "auto";
         checkout_section.style.opacity = 1;
@@ -104,30 +154,6 @@ for (i = 0; i < element_IDs.length; i++) {
 
 
 // Controlling the number field in the order form
-function handleEnableDisable(itemId) {
-    var currentValue = parseInt($(`#id_qty_${itemId}`).val())
-    var minusDisabled = currentValue < 2;
-    var plusDisabled = currentValue > 98;
-    $(`#decrement-qty_${itemId}`).prop("disabled", minusDisabled);
-    $(`#increment-qty_${itemId}`).prop("disabled", plusDisabled);
-}
-$('.increment-qty').click(function(e) {
-    e.preventDefault();
-    var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-    var currentValue = parseInt($(closestInput).val());
-    $(closestInput).val(currentValue + 1);
-    var itemId = $(this).data("item_id");
-    handleEnableDisable(itemId);
-});
-
-$('.decrement-qty').click(function(e){
-    e.preventDefault();
-    var closestInput = $(this).closest('.input-group').find(".qty_input")[0];
-    var currentValue = parseInt($(closestInput).val());
-    $(closestInput).val(currentValue - 1);
-    var itemId = $(this).data("item_id");
-    handleEnableDisable(itemId);
-})
 
 var storeItems = document.getElementsByClassName("info-section"); 
 var vertical;
