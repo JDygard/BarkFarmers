@@ -16,14 +16,17 @@ let cooking_order = function() {
 delivery_select_cooking.addEventListener("click", cooking_order)
 
 // This function is called every time the user changes an option to recalculate the price of the order
-var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal, quantitySelect, stackingField, depositField, deliveryField, woodField, totalField) {
+var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal, quantitySelect, lineItems, totalField) {
     // establish variables
 
     let total = 0;
+    let string = ""
     let delivery = 0;
     let deposit = 0;
     let stacking = 0;
-
+    let x = "<tr><td>"
+    let y = "</td></tr>"
+    let yx = "</td><td> </td><td>"
     // calculate fees and total
 
     if (deliverySelect.value == "delivery") {
@@ -46,11 +49,57 @@ var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal
 
     if (quantitySelect.style.opacity != 0) {
         if (woodSelect.value == "hardwood") {
-            woodTotal = hardwood.price * quantityTotal.value;
+            let woodTotal = hardwood.price * quantityTotal.value;
+            total += woodTotal
+            if (quantityTotal.value > 1) {
+                string += x + quantityTotal.value + " ricks of hardwood: " + yx + woodTotal.toFixed(2) + y
+            } else {
+                string += x + quantityTotal.value + " rick of hardwood: " + yx + woodTotal.toFixed(2) + y
+            }
+        } else if (woodSelect.value == "softwood") {
+            let woodTotal = softwood.price * quantityTotal.value;
+            total += woodTotal
+            if (quantityTotal.value > 1) {
+                string += x + quantityTotal.value + " ricks of softwood: " + yx + woodTotal.toFixed(2) + y
+            } else {
+                string += x + quantityTotal.value + " rick of softwood: " + yx + woodTotal.toFixed(2) + y
+            }
+        }
+    }
+
+    // Adjust fields in the "grand total" section
+
+    if (delivery == 0) {
+        delivery.innerHTML = ""
+    } else {
+        string += x + "Delivery fee (standard) " + yx + delivery.toFixed(2) + y
+    }
+
+    if (deposit == 0) {
+        deposit.innerHTML = ""
+    } else {
+        string += x + "Bag deposit " + yx + deposit.toFixed(2) + y
+    }
+
+    if (stacking == 0) {
+        stacking.innerHTML = ""
+    } else {
+        string += x + "Hand stacking fee " + yx + stacking.toFixed(2) + y
+    }
+
+    lineItems.innerHTML = string;
+    totalField.innerHTML = total.toFixed(2)
+}
+
+/* if (quantitySelect.style.opacity != 0) {
+        if (woodSelect.value == "hardwood") {
+            let woodTotal = hardwood.price * quantityTotal.value;
             total += woodTotal
             woodField.innerHTML = quantityTotal.value + " rick hardwood: " + woodTotal.toFixed(2)
         } else if (woodSelect.value == "softwood") {
-            total += softwood.price * quantityTotal.value;
+            let woodTotal = softwood.price * quantityTotal.value;
+            total += woodTotal
+            woodField.innerHTML = quantityTotal.value + " rick softwood: " + woodTotal.toFixed(2)
         }
     }
 
@@ -74,8 +123,10 @@ var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal
         stackingField.innerHTML = "Hand stacking fee: " + stacking.toFixed(2)
     }
     
-    totalField.innerHTML = total.toFixed(2);
-}
+    totalField.innerHTML = x + total.toFixed(2) + y;
+} */
+
+
 
 // For loop that builds the JS for the hard and soft woods forms
 var element_IDs = ["_soft", "_hard"]
@@ -96,20 +147,17 @@ for (i = 0; i < element_IDs.length; i++) {
     
     // Defining the bag breakdown
     let grandTotal = document.getElementById("grand_total" + element_IDs[i]);
-    let depositParagraph = document.getElementById("deposit" + element_IDs[i]);
-    let deliveryParagraph = document.getElementById("delivery" + element_IDs[i]);
-    let stackingParagraph = document.getElementById("stacking" + element_IDs[i]);
-    let woodParagraph = document.getElementById("wood_cost" + element_IDs[i]);
+    let lineItems = document.getElementById("line_items" + element_IDs[i]);
 
     var updateOnChange = function() {
         // Adjust total
-        updateTotal(woodType, deliverySelect, typeSelect, quantityTotal, quantitySelect, stackingParagraph, depositParagraph, deliveryParagraph, woodParagraph, grandTotal)
+        updateTotal(woodType, deliverySelect, typeSelect, quantityTotal, quantitySelect, lineItems, grandTotal)
         
         // Reveal the next step when an option is selected
         if (deliverySelect.value !== "" && typeSelect.value !== "") {
             quantitySelect.style.height = "auto";
             quantitySelect.style.opacity = 1;
-            updateTotal(woodType, deliverySelect, typeSelect, quantityTotal, quantitySelect, stackingParagraph, depositParagraph, deliveryParagraph, woodParagraph, grandTotal)
+            updateTotal(woodType, deliverySelect, typeSelect, quantityTotal, quantitySelect, lineItems, grandTotal)
         }
     
         // Remove "hand-stacked" from type when pickup is selected
@@ -140,10 +188,7 @@ for (i = 0; i < element_IDs.length; i++) {
         quantitySelect.firstElementChild.style.opacity = 0;
         continue_btn.style.opacity = 0;
         // Disappear the line items:
-        stackingParagraph.innerHTML = "";
-        depositParagraph.innerHTML = "";
-        deliveryParagraph.innerHTML = "";
-        woodParagraph.innerHTML = "";
+        lineItems.parentElement.style.display = "none";
         // Reveal checkout
         checkout_section.style.height = "auto";
         checkout_section.style.opacity = 1;
@@ -270,8 +315,7 @@ for (let t = 0; t < storeItems.length; t++) {
             
             // Sections being revealed
             collapse.setAttribute("class", "col-md-12 active-store-item-portrait");
-            
-            console.log(event.target)
+
             let paragraph = event.target.lastElementChild;
             paragraph.classList.remove("hidden-items");
 

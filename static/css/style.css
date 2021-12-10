@@ -306,7 +306,21 @@ table {
     background:#e0e0e0
 }
 
-/* Universal elements styling */
+#grand_total_hard > tr:first-child {
+    justify-content: left;
+}
+
+/* Checkout styling */
+.fieldset-label {
+    position: relative;
+    right: .5rem;
+}
+
+#payment-form .form-control,
+#card-element {
+    color: #000;
+    border: 1px solid #000;
+}
 
 /* Button */
 .btn {
