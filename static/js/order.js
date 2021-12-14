@@ -171,12 +171,18 @@ for (i = 0; i < element_IDs.length; i++) {
         }
     }
 
+    var optionReset = function() {
+        deliverySelect.value = "";
+        typeSelect.value = "";
+        quantityTotal = 1;
+    }
+
     deliverySelect.addEventListener('change', updateOnChange);
     typeSelect.addEventListener('change', updateOnChange);
     quantityTotal.addEventListener('input', updateOnChange);
-    deliverySelect.addEventListener('load', updateOnChange);
-    typeSelect.addEventListener('load', updateOnChange);
-    quantityTotal.addEventListener('load', updateOnChange);
+    deliverySelect.addEventListener('load', optionReset);
+    quantityTotal.addEventListener('load', optionReset);
+    typeSelect.addEventListener('load', optionReset);
     continue_btn.addEventListener("click", function() {
         // Minimize other options
         deliverySelect.previousElementSibling.style.height = 0;

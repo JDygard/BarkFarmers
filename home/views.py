@@ -25,6 +25,8 @@ def order(request):
         'order_form': order_form,
         'products': products,
         'shipping_data': shipping_data,
+        'stripe_public_key': "pk_test_51JnL4xIC2c9xnZcNHBlkLDVqv7VsvItgEv2gxkCxGA35xj44WO5J9ESJqWLqtQsnEl2Go0T6DXnppbH9sOohrhrd005cRrLFsL",
+        'client_secret': "test client secret"
     }
 
     return render(request, 'home/order.html', context)

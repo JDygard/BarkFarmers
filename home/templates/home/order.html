@@ -105,7 +105,7 @@
                                             <p><strong>How much do you want?</strong></p>
                                             <div class="input-group">
                                                 <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" class="form-control qty_input">
-                                                <p><strong data-toggle="tooltip" data-placement="bottom" title="I dunno">ricks</strong></p>
+                                                <a href="#">How much wood is this?</a>
                                             </div>
                                             <a class="btn-dark btn-black rounded-0" id="continue_btn_soft">
                                                 <span>Continue<i class="fas fa-angle-double-down"></i></span>
@@ -203,4 +203,35 @@
         var stackingCharge = {{ shipping_data.stacking_charge }}
     </script>
     <script src="{% static 'js/order.js' %}"></script>
+    {% block postloadjs %}
+        {{ block.super }}
+        {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+        {{ client_secret|json_script:"id_client_secret"}}
+
+        <script>
+            var stripe_public_key = $('#id_stripe_public_key').text().slice(1, -1);
+            var client_secret = $('#id_client_secret').text().slice(1, -1);
+            var stripe = Stripe(stripe_public_key);
+            var elements = stripe.elements();
+            console.log("FIGURE EIGHT")
+            var style = {
+                base: {
+                    color: '#000',
+                    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                    fontSmoothing: 'antialiased',
+                    fontSize: '16px',
+                    '::placeholder': {
+                        color: '#aab7c4'
+                    }
+                },
+                invalid: {
+                    color: '#dc3545',
+                    iconColor: '#dc3545'
+                }
+            };
+            var card = elements.create('card', {style: style});
+            card.mount('#card-element');
+        </script>
+    
+    {% endblock %}
 {% endblock %}
