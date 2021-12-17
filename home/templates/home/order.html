@@ -44,8 +44,8 @@
                                             <p><strong>How much do you want?</strong></p>
                                             <div class="input-group">
                                                 <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" class="form-control qty_input">
+                                                <a href="{% url 'home' %}#learn-more">How much wood is this?</a>
                                             </div>
-                                            <p><strong data-toggle="tooltip" data-placement="bottom" title="I dunno">ricks</strong></p>
                                             <a class="btn-dark btn-black rounded-0" id="continue_btn_hard">
                                                 <span>Continue<i class="fas fa-angle-double-down"></i></span>
                                             </a>
@@ -107,7 +107,7 @@
                                             <p><strong>How much do you want?</strong></p>
                                             <div class="input-group">
                                                 <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" class="form-control qty_input">
-                                                <a href="#">How much wood is this?</a>
+                                                <a href="{% url 'home' %}#learn-more">How much wood is this? </a>
                                             </div>
                                             <a class="btn-dark btn-black rounded-0" id="continue_btn_soft">
                                                 <span>Continue<i class="fas fa-angle-double-down"></i></span>
@@ -162,6 +162,7 @@
                                                     </button>
                                                 </div>
                                                 <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" class="form-control qty_input">
+                                                <a href="{% url 'home' %}#learn-more">How much wood is this?</a>
                                                 <div class="input-group-append">
                                                     <button class="increment-qty btn-dark btn-sm btn-black rounded-0" data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
                                                         <span><i class="fas fa-plus fa-sm"></i></span>
