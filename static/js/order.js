@@ -91,44 +91,9 @@ var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal
     totalField.innerHTML = total.toFixed(2)
 }
 
-/* if (quantitySelect.style.opacity != 0) {
-        if (woodSelect.value == "hardwood") {
-            let woodTotal = hardwood.price * quantityTotal.value;
-            total += woodTotal
-            woodField.innerHTML = quantityTotal.value + " rick hardwood: " + woodTotal.toFixed(2)
-        } else if (woodSelect.value == "softwood") {
-            let woodTotal = softwood.price * quantityTotal.value;
-            total += woodTotal
-            woodField.innerHTML = quantityTotal.value + " rick softwood: " + woodTotal.toFixed(2)
-        }
-    }
-
-    // Adjust fields in the "grand total" section
-
-    if (delivery == 0) {
-        delivery.innerHTML = ""
-    } else {
-        deliveryField.innerHTML = "Delivery fee (standard): " + delivery.toFixed(2)
-    }
-
-    if (deposit == 0) {
-        deposit.innerHTML = ""
-    } else {
-        depositField.innerHTML = "Bag deposit: " + deposit.toFixed(2)
-    }
-
-    if (stacking == 0) {
-        stacking.innerHTML = ""
-    } else {
-        stackingField.innerHTML = "Hand stacking fee: " + stacking.toFixed(2)
-    }
-    
-    totalField.innerHTML = x + total.toFixed(2) + y;
-} */
-
-
-
 // For loop that builds the JS for the hard and soft woods forms
+
+var checkout = document.getElementById("checkout");
 var element_IDs = ["_soft", "_hard"]
 for (i = 0; i < element_IDs.length; i++) {
     // Defining the select elements
@@ -141,7 +106,7 @@ for (i = 0; i < element_IDs.length; i++) {
 
     // Defining various functional elements
     let continue_btn = document.getElementById("continue_btn" + element_IDs[i]);
-    let checkout_section = document.getElementById("checkout_section" + element_IDs[i]);
+    let checkoutSection = document.getElementById("checkout_section" + element_IDs[i]);
     let quantitySelect = document.getElementById('quantity_select' + element_IDs[i]);
     let quantityTotal = quantitySelect.firstElementChild.nextElementSibling.firstElementChild
     
@@ -196,9 +161,11 @@ for (i = 0; i < element_IDs.length; i++) {
         // Disappear the line items:
         lineItems.parentElement.style.display = "none";
         // Reveal checkout
-        checkout_section.style.height = "auto";
-        checkout_section.style.opacity = 1;
-        checkout_section.style.overflow = "scroll";
+        checkoutSection.style.height = "auto";
+        checkoutSection.style.opacity = 1;
+        checkoutSection.style.overflow = "scroll";
+        checkoutSection.appendChild(checkout);
+        console.log(checkoutSection)
     })
 };
 

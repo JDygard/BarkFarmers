@@ -54,7 +54,9 @@
                                         </div>
                                     </div>
                                     <div id="checkout_section_hard">
-                                        {% include 'checkout.html' %}
+                                        <div id="checkout">
+                                            {% include 'checkout.html' %}
+                                        </div>
                                     </div>
                                     <div class="h-auto">
                                         <table class="table table-borderless table-sm">
@@ -115,7 +117,6 @@
                                         </div>
                                     </div>
                                     <div id="checkout_section_soft">
-                                        {% include 'checkout.html' %}
                                     </div>
                                     <div class="h-auto">
                                         <table class="table table-borderless table-sm">
@@ -175,8 +176,7 @@
                                         <div class="col-12">
                                         </div>
                                     </div>
-                                    <div id="checkout_section_soft">
-                                        {% include 'checkout.html' %}
+                                    <div id="checkout_section_cook">
                                     </div>
                                     <div>
                                         <p><strong id="grand-total-cook">$0.00</strong></p>
@@ -213,7 +213,6 @@
             var client_secret = $('#id_client_secret').text().slice(1, -1);
             var stripe = Stripe(stripe_public_key);
             var elements = stripe.elements();
-            console.log("FIGURE EIGHT")
             var style = {
                 base: {
                     color: '#000',
