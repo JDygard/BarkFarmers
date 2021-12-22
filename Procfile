@@ -1,1 +1,1 @@
-web: python website/manage.py runserver 0.0.0.0:$PORT
+web: python3 bark-farmers/manage.py runserver 0.0.0.0:$PORT
