@@ -22,13 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@nxrxh!@(ba^kav!_s^1fq(!7je2$l(k_@*vc%g97*6n2au77%'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'bark-farmers.herokuapp.com',
+    'localhost'
 ]
 
 
@@ -124,7 +125,7 @@ WSGI_APPLICATION = 'bark_farmers.wsgi.application'
 # }
 
 DATABASES = {
-    'default': dj_database_url.parse("postgres://ktxezghrhhtlqf:13e1a9c4b672bef6152fdb8904ccdfa4a2d4a5e12b81ee92f96e83024d5e46ba@ec2-99-80-108-106.eu-west-1.compute.amazonaws.com:5432/de59gh7gk3vglr")
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 
