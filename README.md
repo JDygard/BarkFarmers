@@ -194,3 +194,32 @@ For a cleaner look to paragraphs and other information blocks, Montserrat has be
 ![alt text](assets/images/readme/wireframing/store.png)
 ![alt text](assets/images/readme/wireframing/store-order.png)
 ![alt text](assets/images/readme/wireframing/commercial.png)
+
+# Deployment
+This software was deployed using AWS S3 and Heroku web interface.
+
+## Github
+We will be configuring Heroku to work from our Github repository. In order to deploy your own version of this software, you will need to:
+1. Log in at or sign up to [Github](https://github.com).
+2. Navigate to the BarkFarmers repository [here](https://github.com/JDygard/BarkFarmers).
+3. Click the "code" dropdown menu and select a method to clone the repository.
+
+4. Create your own repository with the cloned one.
+
+
+## Heroku
+Heroku will be providing the hosting services for this software.
+1. Log in at or sign up to [Heroku](https://www.heroku.com).
+2. At the apps screen, click "New" and select New App.
+3. Select a region and unique app name relevant to your use-case.
+4. With your new app created, click on the "Deploy" tab.
+5. In the "Deployment method" row, select GitHub. Type in the name of your cloned GitHub repository.
+6. Click on the "Settings" tab and find the "Config Vars" row. Click "Reveal Config Vars" Add the following key:value pairs:
+
+
+        AWS_ACCESS_KEY_ID:      // Enter your aws access key from the AWS step
+        AWS_SECRET_ACCESS_KEY:  // Enter your aws secret access key from the AWS step
+        USE_AWS: TRUE
+
+
+## Amazon Web Services

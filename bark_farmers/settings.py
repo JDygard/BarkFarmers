@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -113,11 +114,15 @@ WSGI_APPLICATION = 'bark_farmers.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse("postgres://ktxezghrhhtlqf:13e1a9c4b672bef6152fdb8904ccdfa4a2d4a5e12b81ee92f96e83024d5e46ba@ec2-99-80-108-106.eu-west-1.compute.amazonaws.com:5432/de59gh7gk3vglr")
 }
 
 
