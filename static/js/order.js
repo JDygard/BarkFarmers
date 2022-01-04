@@ -31,6 +31,7 @@ var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal
 
     if (deliverySelect.value == "delivery") {
         delivery = deliveryCharge;
+        total += deliveryCharge;
     }
 
     if (typeSelect.value == "bag") {
@@ -165,7 +166,6 @@ for (i = 0; i < element_IDs.length; i++) {
         checkoutSection.style.opacity = 1;
         checkoutSection.style.overflow = "scroll";
         checkoutSection.appendChild(checkout);
-        console.log(checkoutSection)
     })
 };
 
