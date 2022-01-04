@@ -5,10 +5,18 @@ var elements = stripe.elements();
 var card = elements.create('card');
 var style = {
     base: {
-        color: '#000',
+        color: '#212529',
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
         fontSmoothing: 'antialiased',
-        fontSize: '16px',
+        fontSize: '1rem',
+        fontWeight: '400',
+        display: 'block',
+        width: '100%',
+        padding: '.375rem .75rem',
+        lineHeight: '1.5',
+        backgroundColor: '#fff',
+        border: '1px solid #ced4da',
+        border-radius: '.25rem'
         '::placeholder': {
             color: '#aab7c4'
         }
