@@ -213,10 +213,6 @@ table {
     pointer-events: none;
 }
 
-.formstuff {
-    color: green;
-}
-
 .hidden-paragraph-portrait {
     pointer-events: none;
     color: black;
@@ -332,7 +328,7 @@ table {
     width: 100%
 }
 
-.form-box {
+.form-box, .CardField {
     position: relative;
     padding-left: 0 !important;
     max-height: 100%;
