@@ -328,7 +328,7 @@ table {
     width: 100%
 }
 
-.form-box, .CardField {
+.form-box {
     position: relative;
     padding-left: 0 !important;
     max-height: 100%;
