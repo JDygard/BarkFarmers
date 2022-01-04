@@ -16,7 +16,7 @@ var style = {
         lineHeight: '1.5',
         backgroundColor: '#fff',
         border: '1px solid #ced4da',
-        border-radius: '.25rem'
+        borderRadius: '.25rem',
         '::placeholder': {
             color: '#aab7c4'
         }
