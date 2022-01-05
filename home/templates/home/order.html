@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+{% block extra_css %}
+
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+
+{% endblock %}
 {% block content %}
     <div class="container" id="hero-image">
         {% include 'main-nav.html' %}
@@ -205,11 +210,12 @@
     </script>
     <script src="{% static 'js/order.js' %}"></script>
     {% block postloadjs %}
+
         {{ block.super }}
         {{ stripe_public_key|json_script:"id_stripe_public_key" }}
         {{ client_secret|json_script:"id_client_secret"}}
 
-    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+        <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
     
     {% endblock %}
 {% endblock %}
