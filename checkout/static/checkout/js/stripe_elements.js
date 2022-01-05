@@ -7,15 +7,9 @@ var style = {
         color: '#212529',
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
         fontSmoothing: 'antialiased',
-        fontSize: '1rem',
+        fontSize: '16px',
         fontWeight: '400',
-        display: 'block',
-        width: '100%',
-        padding: '.375rem .75rem',
-        lineHeight: '1.5',
         backgroundColor: '#fff',
-        border: '1px solid #ced4da',
-        borderRadius: '.25rem',
         '::placeholder': {
             color: '#aab7c4'
         }
