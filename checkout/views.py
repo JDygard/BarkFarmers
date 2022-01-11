@@ -6,6 +6,7 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
+    print("request successful")
     if request.method == "POST":
         print("Post request successful")
 
