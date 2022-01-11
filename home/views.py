@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.conf import settings
 from django.http import HttpResponseRedirect
 from bark_farmers.settings import BAG_DEPOSIT, DELIVERY_CHARGE_JUMBO, DELIVERY_CHARGE_STANDARD, JUMBO_DELIVERY_THRESHOLD, STACKING_CHARGE
 from checkout.forms import OrderForm
@@ -28,8 +29,14 @@ def order(request):
         'stripe_public_key': "pk_test_51JnL4xIC2c9xnZcNHBlkLDVqv7VsvItgEv2gxkCxGA35xj44WO5J9ESJqWLqtQsnEl2Go0T6DXnppbH9sOohrhrd005cRrLFsL",
         'client_secret': "test client secret"
     }
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    return render(request, 'home/order.html', context)
+    if request.method == "POST":
+        order_context = request.POST
+        return render(request, 'home/checkout.html', context=order_context)
+    else:
+        return render(request, 'home/order.html', context)
 
 def commercial(request):
     """ View returns commercial customer page """

@@ -23,7 +23,7 @@
                                 </p>
                             </div>
                             <div class="col-lg-6 col-md-12 hidden-items text-black pl-0 form-box">
-                                <form action="" class="form" method="POST">
+                                <form action="" class="form" method="POST" id="select_form">
                                     {% csrf_token %}
                                     <div class="form-row my-auto">
                                         <input id="wood_type_hard" type="hidden" value="hardwood">
@@ -51,8 +51,8 @@
                                                 <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" class="form-control qty_input">
                                                 <a href="{% url 'home' %}#learn-more">How much wood is this?</a>
                                             </div>
-                                            <a class="btn-dark btn-black rounded-0" id="continue_btn_hard" type="submit">
-                                                <span>Continue<i class="fas fa-angle-double-down"></i></span>
+                                            <a class="btn-dark btn-black rounded-0" id="continue_btn_hard">
+                                                <button type="submit">Continue<i class="fas fa-angle-double-down"></i></button>
                                             </a>
                                         </div>
                                         <div class="col-12">
