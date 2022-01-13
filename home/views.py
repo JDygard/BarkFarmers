@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from bark_farmers.settings import BAG_DEPOSIT, DELIVERY_CHARGE_JUMBO, DELIVERY_CHARGE_STANDARD, JUMBO_DELIVERY_THRESHOLD, STACKING_CHARGE
 from checkout.forms import OrderForm
 from customers.models import Product
-
+import stripe
 # Create your views here.
 
 def index(request):
@@ -29,14 +29,30 @@ def order(request):
         'stripe_public_key': "pk_test_51JnL4xIC2c9xnZcNHBlkLDVqv7VsvItgEv2gxkCxGA35xj44WO5J9ESJqWLqtQsnEl2Go0T6DXnppbH9sOohrhrd005cRrLFsL",
         'client_secret': "test client secret"
     }
-    stripe_public_key = settings.STRIPE_PUBLIC_KEY
-    stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == "POST":
-        order_context = request.POST
-        return render(request, 'home/checkout.html', context=order_context)
-    else:
-        return render(request, 'home/order.html', context)
+        # Take order information, add it to context, return render the checkout page
+        order_context = {
+            'delivery_method': request.POST.__getitem__('delivery_method'),
+            'product_type': request.POST.__getitem__('product_type'),
+            'quantity': request.POST.__getitem__('quantity')
+        }
+        return render(request, 'checkout/checkout.html', order_context)
+
+    # order_context = request.POST
+    # stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    # stripe_secret_key = settings.STRIPE_SECRET_KEY
+
+    # stripe_total = 9
+    # stripe.api_key = stripe_secret_key
+    # intent = stripe.PaymentIntent.create(
+    #     amount = stripe_total,
+    #     currency=settings.STRIPE_CURRENCY,
+    # )
+    # print(intent)
+    # return render(request, 'home/checkout.html', context=order_context)    
+    
+    return render(request, 'home/order.html', context)
 
 def commercial(request):
     """ View returns commercial customer page """

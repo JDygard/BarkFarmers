@@ -61,7 +61,6 @@
                                 </form>
                                 <div id="checkout_section_hard">
                                     <div id="checkout">
-                                        {% include 'checkout.html' %}
                                     </div>
                                 </div>
                                 <div class="h-auto">
@@ -209,13 +208,4 @@
         var stackingCharge = {{ shipping_data.stacking_charge }}
     </script>
     <script src="{% static 'js/order.js' %}"></script>
-    {% block postloadjs %}
-
-        {{ block.super }}
-        {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-        {{ client_secret|json_script:"id_client_secret"}}
-
-        <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
-    
-    {% endblock %}
 {% endblock %}
