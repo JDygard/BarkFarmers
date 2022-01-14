@@ -31,6 +31,7 @@ def order(request):
 
     if request.method == "POST":
         # Take order information, add it to context, return render the checkout page
+        request.session['wood_type'] = request.POST.__getitem__('wood_type')
         request.session['delivery_method'] = request.POST.__getitem__('delivery_method')
         request.session['product_type'] = request.POST.__getitem__('product_type')
         request.session['quantity'] = request.POST.__getitem__('quantity')

@@ -6,7 +6,7 @@
         {% include 'main-nav.html' %}
         <div class="overlay"></div>
         <div class="account-box">
-            <form action="" method="POST"></form>
+            <form action="{% url 'checkout' %}" method="POST" id="payment-form"></form>
                 <fieldset class="rounded px-3 mb-5">
                     <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
                     {{ order_form.full_name | as_crispy_field }}
@@ -52,7 +52,7 @@
                     <p class="small text-danger my-0">
                         <span class="icon"><i class="fas fa-exclamation-circle"></i></span>
                     </p>
-                    <span>Your card will be charged ${{ grand_total|floatformat:2 }}</span>
+                    <span>Your card will be charged ${{ stripe_total }}</span>
                 </div>
             </form>
         </div>

@@ -26,7 +26,7 @@
                                 <form action="" class="form" method="POST" id="select_form">
                                     {% csrf_token %}
                                     <div class="form-row my-auto">
-                                        <input id="wood_type_hard" type="hidden" value="hardwood">
+                                        <input name="wood_type" id="wood_type_hard" type="hidden" value="hardwood">
                                         <div class="col-12">
                                             <p><strong>Pickup or Delivery?</strong></p>
                                             <select name="delivery_method" class="form-control rounded-0" id="id_delivery_method_hard">
