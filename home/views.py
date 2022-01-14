@@ -1,10 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from bark_farmers.settings import BAG_DEPOSIT, DELIVERY_CHARGE_JUMBO, DELIVERY_CHARGE_STANDARD, JUMBO_DELIVERY_THRESHOLD, STACKING_CHARGE
 from checkout.forms import OrderForm
 from customers.models import Product
-import stripe
 # Create your views here.
 
 def index(request):
@@ -32,27 +31,13 @@ def order(request):
 
     if request.method == "POST":
         # Take order information, add it to context, return render the checkout page
-        order_context = {
-            'delivery_method': request.POST.__getitem__('delivery_method'),
-            'product_type': request.POST.__getitem__('product_type'),
-            'quantity': request.POST.__getitem__('quantity')
-        }
-        return render(request, 'checkout/checkout.html', order_context)
-
-    # order_context = request.POST
-    # stripe_public_key = settings.STRIPE_PUBLIC_KEY
-    # stripe_secret_key = settings.STRIPE_SECRET_KEY
-
-    # stripe_total = 9
-    # stripe.api_key = stripe_secret_key
-    # intent = stripe.PaymentIntent.create(
-    #     amount = stripe_total,
-    #     currency=settings.STRIPE_CURRENCY,
-    # )
-    # print(intent)
-    # return render(request, 'home/checkout.html', context=order_context)    
+        request.session['delivery_method'] = request.POST.__getitem__('delivery_method')
+        request.session['product_type'] = request.POST.__getitem__('product_type')
+        request.session['quantity'] = request.POST.__getitem__('quantity')
+        return redirect('checkout')  
     
-    return render(request, 'home/order.html', context)
+    elif request.method != "POST":
+        return render(request, 'home/order.html', context)
 
 def commercial(request):
     """ View returns commercial customer page """
