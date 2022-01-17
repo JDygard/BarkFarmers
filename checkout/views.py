@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.conf import settings
 from django.contrib import messages
 from decimal import Decimal, getcontext
@@ -7,7 +7,7 @@ import math
 
 from bark_farmers.settings import BAG_DEPOSIT, DELIVERY_CHARGE_JUMBO, DELIVERY_CHARGE_STANDARD, STACKING_CHARGE
 from .forms import OrderForm
-from .models import OrderLineItem
+from .models import OrderLineItem, Order
 import stripe
 from customers.models import Product
 
@@ -79,6 +79,19 @@ def checkout(request):
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
         'stripe_total': stripe_total/100,
+    }
+
+    return render(request, template, context)
+
+def checkout_success(request, order_number):
+    save_info = request.session.get('save_info')
+    order = get_object_or_404(Order, order_number=order_number)
+    messages.success(request, f'Order successfully processed. \
+        Your order number is {order_number}. A confirmation \
+        email will be sent to {order.email}')
+    template = 'checkout/checkout_success.html'
+    context = {
+        order: order,
     }
 
     return render(request, template, context)
