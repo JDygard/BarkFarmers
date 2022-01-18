@@ -91,7 +91,7 @@ def checkout_success(request, order_number):
         email will be sent to {order.email}')
     template = 'checkout_success.html'
     context = {
-        order: order,
+        "order": order,
     }
 
     return render(request, template, context)
