@@ -22,19 +22,6 @@ class Customer(models.Model):
         def __unicode__(self):
             return u"%s's Subscription Info" % self.user_rec
 
-
-class Invoice(models.Model):
-    customer = models.ForeignKey('Customer', null=True, blank=False, on_delete=models.SET_NULL)
-    product_id = models.ForeignKey('Product', null=True, blank=False, on_delete=models.SET_NULL)
-    invoice_date = models.DateField(auto_now=False, auto_now_add=True)
-    price = models.DecimalField(max_digits=9, decimal_places=2)
-    delivery = models.BooleanField()
-    delivery_address_one = models.CharField(max_length=50, blank=True, null=True)
-    delivery_address_two = models.CharField(max_length=50, blank=True, null=True)
-    delivery_city = models.CharField(max_length=50, blank=True, null=True)
-    delivery_state = models.CharField(max_length=50, blank=True, null=True)
-
-
 class Product(models.Model):
     name = models.CharField(max_length=50, default="PRODUCT")
     price = models.DecimalField(max_digits=5, decimal_places=2, blank=False, null=True)

@@ -6,6 +6,8 @@ from django.conf import settings
 
 from customers.models import Product
 
+from decimal import *
+
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
@@ -66,5 +68,6 @@ class OrderLineItem(models.Model):
         """
         Save an order number for each line item
         """
-        self.lineitem_total = self.product.price * self.quantity
+        print(self.quantity)
+        self.lineitem_total = Decimal(self.product.price) * Decimal(self.quantity)
         super().save(*args, **kwargs)

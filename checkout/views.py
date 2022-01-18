@@ -23,11 +23,10 @@ def checkout(request):
     quantity = request.session.get('quantity')
 
     if request.method == 'POST':
-        print("got this far")
         form_data = {
             'full_name': request.POST['full_name'],
-            'email': request.POST['full_name'],
-            'phone_number': request.POST['full_name'],
+            'email': request.POST['email'],
+            'phone_number': request.POST['phone_number'],
             'country': request.POST['country'],
             'postcode': request.POST['postcode'],
             'town_or_city': request.POST['town_or_city'],
@@ -40,15 +39,16 @@ def checkout(request):
             order = order_form.save()
             order_line_item = OrderLineItem(
                 order=order,
-                name=order_item,
+                product=order_item,
                 quantity=quantity,
                 delivery_method=delivery_method,
                 product_type=product_type
             )
+            order_line_item.save()
             request.session['save_info'] = 'save_info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
-            return redirect(reverse('index'))
+            return redirect(reverse('checkout_fail'))
     else:
         order_form = OrderForm()
         template = 'checkout.html'
@@ -89,9 +89,13 @@ def checkout_success(request, order_number):
     messages.success(request, f'Order successfully processed. \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}')
-    template = 'checkout/checkout_success.html'
+    template = 'checkout_success.html'
     context = {
         order: order,
     }
 
     return render(request, template, context)
+
+def checkout_fail(request):
+    template = 'checkout_fail.html'
+    return render(request, template)

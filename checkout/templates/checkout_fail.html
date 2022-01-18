@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container mx-auto" id="hero-image">
+        {% include 'main-nav.html' %}
+        <div class="overlay"></div>
+        <div class="account-box">
+            <div class="row">
+                <div class="col">
+                    <hr>
+                    <h2 class="logo-font mb-4">There was an error with your form.</h2>
+                    <hr>
+                    <p>Please contact us if this error persists: admin@barkfarmers.com</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-7"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block postloadjs %}
+
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret"}}
+
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+
+{% endblock %}
+
