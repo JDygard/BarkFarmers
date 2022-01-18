@@ -1,4 +1,5 @@
 import uuid
+import math
 
 from django.db import models
 from django.db.models import Sum
@@ -36,13 +37,36 @@ class Order(models.Model):
         Update grand total each time a line item is added,
         accounting for delivery costs.
         """
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
-        if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
-            self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
-        else:
-            self.delivery_cost = 0
-        self.grand_total = self.order_total + self.delivery_cost
-        self.save()
+        #look up how much the order weighs. divide the weight by 2500 and gather the delivery cost per truck
+        try:
+            this_order = OrderLineItem.objects.get(order_id=self)
+            order_item = this_order.product
+            quantity = this_order.quantity
+            delivery_method = this_order.delivery_method
+            product_type = this_order.product_type
+            delivery_price = 0
+            weight = order_item.weight * int(quantity)
+
+            if delivery_method == "delivery":
+                if weight <= 4999:
+                    delivery_price += settings.DELIVERY_CHARGE_STANDARD * int(quantity)
+                else:
+                    delivery_price += settings.DELIVERY_CHARGE_JUMBO * int(quantity) / 2
+            if product_type == "stacked":
+                delivery_price += settings.STACKING_CHARGE
+            if product_type == "bag":
+                delivery_price += settings.BAG_DEPOSIT
+            price = Decimal(order_item.price) * Decimal(quantity)
+            self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
+
+            self.delivery_cost = delivery_price
+            self.grand_total = price + Decimal(delivery_price)
+            self.save()
+        except:
+            self.grand_total = 0
+            self.deliver_cost = 0
+            self.order_total = 0
+            self.save()
 
     def save(self, *args, **kwargs):
         """
@@ -68,6 +92,5 @@ class OrderLineItem(models.Model):
         """
         Save an order number for each line item
         """
-        print(self.quantity)
         self.lineitem_total = Decimal(self.product.price) * Decimal(self.quantity)
         super().save(*args, **kwargs)
