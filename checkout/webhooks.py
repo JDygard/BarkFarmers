@@ -17,7 +17,6 @@ def webhook(request):
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
-    print("webhook definition")
 
     try:
         event = stripe.Webhook.construct_event(
