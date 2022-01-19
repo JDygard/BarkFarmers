@@ -8,7 +8,7 @@ from checkout.webhook_handler import StripeWH_Handler
 
 @require_POST
 @csrf_exempt
-def webhooks(request):
+def webhook(request):
     # settings
     wh_secret = settings.STRIPE_WH_SECRET
     stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -19,7 +19,7 @@ def webhooks(request):
     event = None
 
     try:
-        event = stripe.Webhook.construct_from(
+        event = stripe.Webhook.construct_event(
         payload, sig_header, wh_secret
     )
     except ValueError as e:
