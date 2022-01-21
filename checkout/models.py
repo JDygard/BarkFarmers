@@ -47,7 +47,7 @@ class Order(models.Model):
             product_type = this_order.product_type
             delivery_price = 0
             weight = order_item.weight * int(quantity)
-            print(quantity)
+            
             if delivery_method == "delivery":
                 if weight <= 4999:
                     delivery_price += settings.DELIVERY_CHARGE_STANDARD * int(quantity)
