@@ -71,6 +71,7 @@ class StripeWH_Handler:
                     street_address2=shipping_details.address.line2,
                     county=shipping_details.address.state,
                     stripe_pid=pid,
+                    grand_total=grand_total
                 )
                 order_line_item = OrderLineItem(
                     order=order,
