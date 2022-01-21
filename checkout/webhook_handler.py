@@ -21,7 +21,7 @@ class StripeWH_Handler:
         quantity = intent.metadata.quantity,
         product_type = intent.metadata.product_type,
         delivery_method = intent.metadata.delivery_method,
-        wood_type = intent.metadata.wood_type
+        wood_type = intent.metadata.product
 
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.shipping
