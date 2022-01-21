@@ -17,10 +17,19 @@ from customers.models import Product
 def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
+        wood_type = request.session.get('wood_type')
+        order_item = Product.objects.get(name=wood_type)
+        delivery_method = request.session.get('delivery_method')
+        product_type = request.session.get('product_type')
+        quantity = request.session.get('quantity')
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
             'username': request.user,
-            'save_info': request.POST.get('save_info')
+            'save_info': request.POST.get('save_info'),
+            "product": order_item,
+            "quantity": quantity,
+            "delivery_method": delivery_method,
+            "product_type": product_type
         })
         return HttpResponse(status=200)
     except Exception as e:
