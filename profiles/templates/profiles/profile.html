@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto" id="hero-image">
+        {% include 'main-nav.html' %}
+        <div class="overlay"></div>
+        <div class="account-box">
+            <div class="row">
+                <div class="col">
+                    <hr>
+                    <h2 class="logo-font mb-4">My Profile</h2>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
