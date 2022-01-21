@@ -48,10 +48,20 @@ form.addEventListener('submit', function(ev) {
 
     var saveInfo = Boolean($('#id-save-info').attr('checked'));
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+
+    // Since there is no bag app, this is where I'll pass on the order contents:
+    var wood_type = $('input[name="wood_type"]').val();
+    var delivery_method = $('input[name="delivery_method"]').val();
+    var product_type = $('input[name="product_type"]').val();
+    var quantity = $('input[name="quantity"]').val();
     var postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': clientSecret,
         'save_info': saveInfo,
+        'quantity': quantity,
+        'product_type': product_type,
+        'delivery_method': delivery_method,
+        'wood_type': wood_type
     }
     var url = '/cache_checkout_data/';
 
