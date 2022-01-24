@@ -90,6 +90,17 @@ html, body {
     margin: auto;
 }
 
+.information-box {
+    text-align: center;
+    min-height: 400px;
+    width: 80vh;
+    background-color: rgba(250,250,250,.8);
+    border-radius: 50px;
+    border: 2px solid black;
+    padding: 30px;
+    margin: auto;
+}
+
 /* Order page styling */
 
 #storefront {
