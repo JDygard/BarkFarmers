@@ -103,6 +103,11 @@ html, body {
     margin: auto;
 }
 
+.order-history {
+    max-height: 416px;
+    overflow-y: auto;
+}
+
 /* Order page styling */
 
 #storefront {

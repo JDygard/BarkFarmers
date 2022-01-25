@@ -96,6 +96,14 @@
                     </div>
                 </div>
             {% endif %}
+            {% if from_profile %}
+                <a href="{% url 'profile' %}" class="btn btn-black rounded-0 my-2">
+                    <span class="icon mr-2">
+                        <i class="fas fa-angle-left"></i>
+                    </span>
+                    <span class="text-uppercase">Back to profile</span>
+                </a>
+            {% endif %}
 
         </div>
     </div>
