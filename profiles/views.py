@@ -13,14 +13,12 @@ def profile(request):
     form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
 
-
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile updated successfully')
-            return redirect(reverse('profile',))
-            
+
     template = 'profiles/profile.html'
     context = {
         'profile': profile,
