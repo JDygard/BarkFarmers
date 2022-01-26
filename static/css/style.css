@@ -75,6 +75,10 @@ html, body {
     background-color: rgba(1, 255, 255, 0);
 }
 
+.open-hours {
+    width: 380px;
+}
+
 /* Account forms styling */
 
 .account-box {
