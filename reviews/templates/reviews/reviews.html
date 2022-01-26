@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+
+{% endblock %}
+{% block content %}
+    <div class="container" id="hero-image">
+        {% include 'main-nav.html' %}
+        <div class="overlay"></div>
+        <div class="profile-box">
+            User reviews
+            some thoughts from our customers:
+            {% if request.user.is_authenticated %}
+                (if user has no review)
+                    (Stars)(USE SVG MAYBE)
+                    (text review box)
+                (else)
+                    (Show an edit or delete button)
+            {% endif %}
+            (field that shows three random reviews)
+            ("show more" dropdown to show all reviews)
+        </div>
+{% endblock %}
