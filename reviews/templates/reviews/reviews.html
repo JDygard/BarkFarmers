@@ -13,7 +13,9 @@
         <div class="row">
             {% for entry in entries %}
                 <div class="col-sm-12 col-md-4">
-                    <p>{{ entry.user }} {{ entry.stars }}</p>
+                    <p>
+                        {{ entry.user }} <span class="starSpan">{{ entry.stars }}</span>
+                    </p>
                 </div>
             {% endfor %}
         </div>

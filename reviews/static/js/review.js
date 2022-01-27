@@ -11,7 +11,7 @@ function executeRating(stars) {
     stars.map((star) => {
         star.onclick = () => {
             i = stars.indexOf(star);
-            idStars.value = i;
+            idStars.value = i + 1;
             if (star.className===starClassInactive) {
                 for (i; i >= 0; --i) stars[i].className = starClassActive;
             } else {
@@ -21,3 +21,16 @@ function executeRating(stars) {
     });
 }
 executeRating(ratingStars);
+
+// Convert numerical star ratings to an icon for presentation
+var starEntries = document.getElementsByClassName("starSpan");
+for (let i = 0;i <= starEntries.length;i++) {
+    if (starEntries[i] !== undefined) {
+        let number = starEntries[i].innerHTML;
+        let content = ''
+        for (let i = 0;i <= number;i++){
+            content += "<i class='rating__star fas fa-star'></i>"
+        }
+        starEntries[i].innerHTML = content
+    }
+}
