@@ -78,7 +78,18 @@ html, body {
 .open-hours {
     width: 380px;
 }
-
+/* Style the review page */
+/* thanks to https://dev.to/leonardoschmittk/how-to-make-a-star-rating-with-js-36d3 */
+.rating {
+    width: 180px;
+ }
+ 
+ .rating__star {
+    cursor: pointer;
+    color: #dabd18b2;
+ }
+ 
+ 
 /* Account forms styling */
 
 .account-box {
