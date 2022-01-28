@@ -88,6 +88,15 @@ html, body {
     cursor: pointer;
     color: #968420b2;
  }
+
+ #id_review {
+     max-height: 120px;
+     max-width: 60vw;
+ }
+
+ #reviewForm {
+     max-width: 60vw;
+ }
  
  
 /* Account forms styling */

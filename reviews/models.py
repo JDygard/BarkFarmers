@@ -6,4 +6,4 @@ from profiles.models import UserProfile
 class UserReview(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     stars = models.IntegerField(blank=False, null=True)
-    review = models.TextField(blank=True, null=True)
+    review = models.TextField(max_length=128, blank=True, null=True)
