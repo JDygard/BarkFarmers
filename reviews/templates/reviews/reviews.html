@@ -8,21 +8,28 @@
     {% include 'main-nav.html' %}
     <div class="overlay"></div>
     <div class="profile-box">
-        User reviews
-        some thoughts from our customers:
+        <h2>User reviews</h2>
+        <h6>
+            some thoughts from our customers:
+        </h6>
         <div class="row">
             {% for entry in entries %}
-                <div class="col-sm-12 col-md-4">
+                <div class="col-sm-12 col-md-4 p-2 pt-4 reviewBox">
                     <p>
                         {{ entry.user }} <span class="starSpan">{{ entry.stars }}</span>
                     </p>
+                    {% if entry.review %}
+                        <p>
+                            {{ entry.review }}
+                        </p>
+                    {% endif %}
                 </div>
             {% endfor %}
+            <button id="showMore" class="btn">Show more</button>
         </div>
-    ("show more" dropdown to show all reviews)
     {% if request.user.is_authenticated %}
         (if user has no review)
-            <form action="{% url 'submit_reviews' %}" method="POST" class="mt-3">
+            <form action="{% url 'submit_reviews' %}" method="POST" class="mt-3" id="reviewForm">
                 {% csrf_token %}
                     <div class="rating">
                         <h3>Your rating:</h3>
@@ -42,4 +49,37 @@
 </div>
 
 <script src="{% static 'js/review.js' %}"></script>
+<script type="text/javascript">
+    var reviewBoxes = document.getElementsByClassName("reviewBox");
+    let reviewForm = document.getElementById("reviewForm");
+    let showMore = document.getElementById("showMore");
+    var shown = false;
+    for (let i=3;i <= reviewBoxes.length;i++) {
+        if (reviewBoxes[i] !== undefined){
+            reviewBoxes[i].setAttribute("hidden", true);
+        }
+    }
+    showMore.addEventListener("click", function() {
+        if (shown == false) {
+            shown = true;
+            showMore.textContent = "Show Less";
+            reviewForm.setAttribute("hidden", true);
+            for (let i=3;i <= reviewBoxes.length;i++) {
+                if (reviewBoxes[i] !== undefined){
+                    reviewBoxes[i].removeAttribute("hidden");
+                }
+            }
+        }
+        else {
+            shown = false;
+            showMore.textContent = "Show More";
+            reviewForm.removeAttribute("hidden");
+            for (let i=3;i <= reviewBoxes.length;i++) {
+                if (reviewBoxes[i] !== undefined){
+                    reviewBoxes[i].setAttribute("hidden", true);
+                }
+            }
+        }
+    })
+</script>
 {% endblock %}

@@ -34,3 +34,36 @@ for (let i = 0;i <= starEntries.length;i++) {
         starEntries[i].innerHTML = content
     }
 }
+
+// Show/hide more reviews
+var reviewBoxes = document.getElementsByClassName("reviewBox");
+let reviewForm = document.getElementById("reviewForm");
+let showMore = document.getElementById("showMore");
+var shown = false;
+for (let i=3;i <= reviewBoxes.length;i++) {
+    if (reviewBoxes[i] !== undefined){
+        reviewBoxes[i].setAttribute("hidden", true);
+    }
+}
+showMore.addEventListener("click", function() {
+    if (shown == false) {
+        shown = true;
+        showMore.textContent = "Show Less";
+        reviewForm.setAttribute("hidden", true);
+        for (let i=3;i <= reviewBoxes.length;i++) {
+            if (reviewBoxes[i] !== undefined){
+                reviewBoxes[i].removeAttribute("hidden");
+            }
+        }
+    }
+    else {
+        shown = false;
+        showMore.textContent = "Show More";
+        reviewForm.removeAttribute("hidden");
+        for (let i=3;i <= reviewBoxes.length;i++) {
+            if (reviewBoxes[i] !== undefined){
+                reviewBoxes[i].setAttribute("hidden", true);
+            }
+        }
+    }
+})
