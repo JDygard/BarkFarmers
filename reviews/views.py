@@ -22,12 +22,10 @@ def reviews(request):
 def submit_reviews(request):
     existing_review = None
     profile = get_object_or_404(UserProfile, user=request.user)
-    try: 
-        existing_review = UserReview.objects.get(user=profile)
-        print(existing_review)
-    except:
-        messages.error(request, "No review in DB")
-    finally:
+    existing_review = UserReview.objects.filter(user=profile).first()
+    print(existing_review)
+    if not existing_review:
+        print("no review in db")
         existing_review = None
 
     if request.method == 'POST':
@@ -42,7 +40,13 @@ def submit_reviews(request):
                 messages.error(request, 'Submit failed.')
         else: 
             form = UserReviewForm(request.POST, instance=existing_review)
-            form.save()
+            if form.is_valid():
+                review = form.save(commit=False)
+                review.user = profile
+                review.review = request.POST.get("review")
+                review.stars = request.POST.get("stars")
+                form.save()
+
             messages.success(request, 'Review submitted successfully')
 
 

@@ -92,6 +92,7 @@ html, body {
  #id_review {
      max-height: 120px;
      max-width: 60vw;
+     border: 1px #000 solid;
  }
 
  #reviewForm {
