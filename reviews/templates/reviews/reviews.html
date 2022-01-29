@@ -29,7 +29,7 @@
         </div>
     {% if request.user.is_authenticated %}
         (if user has no review)
-            <form action="{% url 'submit_reviews' %}" method="POST" class="mt-3" id="reviewForm">
+            <form action="{% url 'submit_reviews' %}" method="POST" class="mt-3 m-auto" id="reviewForm">
                 {% csrf_token %}
                     <div class="rating">
                         <h3>Your rating:</h3>
