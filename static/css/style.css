@@ -428,7 +428,9 @@ table {
 .btn {
     font-family: "Montserrat", sans-serif;
     color: #000;
-    background-color: #F0F0F0
+    background-color: #F0F0F0;
+    border: 1px solid #000;
+    border-radius: .25 rem;
 }
 
 .btn:hover {
