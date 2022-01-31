@@ -17,6 +17,7 @@ function executeRating(stars) {
             } else {
                 for (i; i < starsLength; ++i) {
                     stars[i].className = starClassInactive;
+                    console.log(stars[starsLength]);
                     stars[starsLength].className = starClassActive;
                 }
             }
@@ -51,7 +52,7 @@ for (let i=3;i <= reviewBoxes.length;i++) {
 showMore.addEventListener("click", function() {
     if (shown == false) {
         shown = true;
-        showMore.textContent = "Show Less  <i class='fas fa-angle-right'>";
+        showMore.innerHTML = "Show Less  <i class='fas fa-angle-right'>";
         reviewForm.setAttribute("hidden", true);
         for (let i=3;i <= reviewBoxes.length;i++) {
             if (reviewBoxes[i] !== undefined){
@@ -61,7 +62,7 @@ showMore.addEventListener("click", function() {
     }
     else {
         shown = false;
-        showMore.textContent = "Show More <i class='fas fa-angle-right'>";
+        showMore.innerHTML = "Show More <i class='fas fa-angle-right'>";
         reviewForm.removeAttribute("hidden");
         for (let i=3;i <= reviewBoxes.length;i++) {
             if (reviewBoxes[i] !== undefined){
