@@ -2,7 +2,10 @@ html, body {
     font-family: "Libre Baskerville", sans-serif;
     background-color: #F0F0F0;
 }
-
+/* Footer */
+footer {
+    bottom: 0;
+}
 /* Navbar styling */
 
 #hero-image {
@@ -403,10 +406,10 @@ table {
 }
 
 .grand-total {
-    position:absolute;
+    position: absolute;
     bottom:0;
     width:95%;
-    height:40px;   /* Height of the footer */
+    height:40px;
     background:#e0e0e0
 }
 

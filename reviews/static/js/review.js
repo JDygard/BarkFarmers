@@ -16,7 +16,8 @@ function executeRating(stars) {
             if (star.className===starClassInactive) {
                 for (i; i >= 0; --i) stars[i].className = starClassActive;
             } else {
-                for (i + 1; i < starsLength; ++i) {
+                i += 1;
+                for (i; i < starsLength; ++i) {
                     stars[i].className = starClassInactive;
                 }
             }
