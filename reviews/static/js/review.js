@@ -49,7 +49,7 @@ for (let i=3;i <= reviewBoxes.length;i++) {
 showMore.addEventListener("click", function() {
     if (shown == false) {
         shown = true;
-        showMore.textContent = "Show Less";
+        showMore.textContent = "Show Less  <i class='fas fa-angle-right'>";
         reviewForm.setAttribute("hidden", true);
         for (let i=3;i <= reviewBoxes.length;i++) {
             if (reviewBoxes[i] !== undefined){
