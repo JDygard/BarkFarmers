@@ -76,6 +76,10 @@ html, body {
     background-color: rgba(1, 255, 255, 0);
 }
 
+.learnImage {
+    max-width: 40vw;
+}
+
 .open-hours {
     width: 380px;
 }
