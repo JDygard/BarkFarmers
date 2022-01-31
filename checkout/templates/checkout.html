@@ -5,7 +5,7 @@
     <div class="container mx-auto" id="hero-image">
         {% include 'main-nav.html' %}
         <div class="overlay"></div>
-        <div class="checkout-box">
+        <div class="checkout-stripe-box">
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-5">

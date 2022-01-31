@@ -136,7 +136,7 @@ footer {
     margin: auto;
 }
 
-.checkout-box {
+.checkout-stripe-box {
     text-align: center;
     min-height: 400px;
     max-width: 445px;
