@@ -3,11 +3,11 @@
     <nav class="navbar fixed-left navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'logo-no-bg.png' %}" alt=""></a>
-            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler collapse" type="button" data-bs-toggle="collapse" data-bs-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navBar">
+            <div class="collapse collapsed navbar-collapse" id="navBar">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'home' %}"> Home <span class="sr-only">(current)</span></a>
@@ -46,5 +46,4 @@
     var collapseList = collapseElementList.map(function (collapseEl) {
       return new bootstrap.Collapse(collapseEl)
     })
-    
 </script>
