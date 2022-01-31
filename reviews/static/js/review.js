@@ -10,18 +10,15 @@ function executeRating(stars) {
     let i;
     stars.map((star) => {
         star.onclick = () => {
+            console.log("version 1.0")
             i = stars.indexOf(star);
             idStars.value = i;
             if (star.className===starClassInactive) {
                 for (i; i >= 0; --i) stars[i].className = starClassActive;
             } else {
-                let topStar
-                for (i; i < starsLength; ++i) {
+                for (i + 1; i < starsLength; ++i) {
                     stars[i].className = starClassInactive;
-                    console.log(starsLength);
-                    topStar = stars[starsLength];
                 }
-                topStar.className = starClassActive;
             }
         };
     });
