@@ -17,7 +17,7 @@ function executeRating(stars) {
             } else {
                 for (i; i < starsLength; ++i) {
                     stars[i].className = starClassInactive;
-                    console.log(stars[starsLength]);
+                    console.log(starsLength);
                     stars[starsLength].className = starClassActive;
                 }
             }
