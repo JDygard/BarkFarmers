@@ -15,11 +15,13 @@ function executeRating(stars) {
             if (star.className===starClassInactive) {
                 for (i; i >= 0; --i) stars[i].className = starClassActive;
             } else {
+                let topStar
                 for (i; i < starsLength; ++i) {
                     stars[i].className = starClassInactive;
                     console.log(starsLength);
-                    stars[starsLength].className = starClassActive;
+                    topStar = stars[starsLength];
                 }
+                topStar.className = starClassActive;
             }
         };
     });
