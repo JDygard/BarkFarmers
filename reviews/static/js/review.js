@@ -15,7 +15,6 @@ function executeRating(stars) {
             if (star.className===starClassInactive) {
                 for (i; i >= 0; --i) stars[i].className = starClassActive;
             } else {
-                console.log(stars)
                 for (i; i < starsLength; ++i) {
                     stars[i].className = starClassInactive;
                     stars[starsLength].className = starClassActive;
@@ -62,7 +61,7 @@ showMore.addEventListener("click", function() {
     }
     else {
         shown = false;
-        showMore.textContent = "Show More";
+        showMore.textContent = "Show More <i class='fas fa-angle-right'>";
         reviewForm.removeAttribute("hidden");
         for (let i=3;i <= reviewBoxes.length;i++) {
             if (reviewBoxes[i] !== undefined){
