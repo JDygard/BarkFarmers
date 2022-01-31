@@ -16,7 +16,10 @@ function executeRating(stars) {
                 for (i; i >= 0; --i) stars[i].className = starClassActive;
             } else {
                 console.log(stars)
-                for (i; i < starsLength; ++i) stars[i].className = starClassInactive;
+                for (i; i < starsLength; ++i) {
+                    stars[i].className = starClassInactive;
+                    stars[starsLength].className = starClassActive;
+                }
             }
         };
     });
