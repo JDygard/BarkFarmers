@@ -12,11 +12,11 @@ function executeRating(stars) {
         star.onclick = () => {
             i = stars.indexOf(star);
             idStars.value = i;
-            console.log(idStars.value)
             if (star.className===starClassInactive) {
                 for (i; i >= 0; --i) stars[i].className = starClassActive;
             } else {
-                for (i; i < starsLength + 1; ++i) stars[i].className = starClassInactive;
+                console.log(stars)
+                for (i; i < starsLength; ++i) stars[i].className = starClassInactive;
             }
         };
     });
