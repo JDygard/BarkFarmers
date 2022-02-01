@@ -82,7 +82,7 @@ footer {
     left: 90%;
 }
 
-.back-to-top h4, .back-to-top i {
+.back-to-top h4, .back-to-top i, .back-to-top a {
     color: #f0f0f0;
     text-decoration: none;
 }
