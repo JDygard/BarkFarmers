@@ -28,7 +28,7 @@ footer {
     background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity)) !important;
 }
 
-.learn-more h4 {
+#learn-more h4 {
     text-align: center;
 }
 
