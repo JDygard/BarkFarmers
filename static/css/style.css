@@ -5,6 +5,11 @@ html, body {
 /* Footer */
 footer {
     bottom: 0;
+    background-color: #dfdfdf;
+}
+
+.copyright {
+    background-color: #b1b1b1
 }
 /* Navbar styling */
 
@@ -23,6 +28,10 @@ footer {
     background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity)) !important;
 }
 
+.learn-more h4 {
+    text-align: center;
+}
+
 .navbar-brand > img {
     height: 10vh;
     margin: 25px;
@@ -31,7 +40,6 @@ footer {
 
 .navbar-nav > .nav-item {
     font-size: 24px;
-    padding: 25px;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -80,7 +88,8 @@ footer {
 }
 
 .learnImage {
-    max-width: 40vw;
+    width: 80%;
+    margin-left:10%;
 }
 
 .open-hours {
