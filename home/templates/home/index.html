@@ -61,6 +61,8 @@
     </div>
     <script type="text/javascript">
         var learnMore = document.getElementsByClassName("learn-more-text")[0];
+        var learnMoreActiveClass = "learn-more-text back-to-top"
+        var learnMoreInactiveClass = "learn-more-text"
         let atTop = true;
         window.onscroll = transformText;
 
@@ -68,12 +70,14 @@
             if (atTop) {
                 if (window.scrollY > 0) {
                     atTop = false;
-                    learnMore.innerHTML = "<a href='#hero-image'><h4 class='back-to-top'>Back to Top</h4><i class='fas fa-chevron-up back-to-top'></i></a>"
+                    learnMore.innerHTML = "<a href='#hero-image'><h4>Back to Top</h4><i class='fas fa-chevron-up'></i></a>"
+                    learnMore.className = learnMoreActiveClass
                 }
             } else {
                 if (window.scrollY == 0) {
                     atTop = true;
                     learnMore.innerHTML = "<h4>Learn More</h4><i class='fas fa-chevron-down'></i>"
+                    learnMore.className = learnMoreInactiveClass
                 }
             }
         }

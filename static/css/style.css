@@ -75,8 +75,14 @@ footer {
 }
 
 .back-to-top {
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 45px;
+    transition: 0.5s;
+}
+
+.back-to-top h4, .back-to-top i {
     color: #f0f0f0;
+    text-decoration: none;
 }
 
 @keyframes fadein {
