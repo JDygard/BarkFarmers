@@ -32,6 +32,10 @@ footer {
     text-align: center;
 }
 
+nav {
+    position: absolute;
+}
+
 .navbar-brand > img {
     height: 10vh;
     margin: 25px;
@@ -50,12 +54,19 @@ footer {
     color: rgba(0,0,0,1);
 }
 
+@media screen and (max-width: 992px) {
+    #navbar {
+        background-color: rgba(250,250,250,.9);
+        border-radius: 5px;
+    }
+}
 /* index page styling */
 
 #hero-content {
     text-align: center;
-    height: 90vh;
-    color: #e3e6f2
+    height: 100vh;
+    color: #e3e6f2;
+    padding-top: 40%;
 }
 
 #hero-blurb > h1 {
