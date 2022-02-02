@@ -74,6 +74,7 @@ footer {
 #hero-content {
     text-align: center;
     height: 100vh;
+    width: 100vw;
     color: #e3e6f2;
     padding-top: 20%;
 }
