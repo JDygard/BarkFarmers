@@ -70,12 +70,11 @@
         })
 
         function btnFlip() {
-            for (btn in btns) {
-                console.log(btn)
-                if (btn.classList.contains("hidden")) {
-                    btn.classList.remove("hidden");
+            for (let i = 0;i < btns.length;i++) {
+                if (btns[i].classList.contains("disabled")) {
+                    btns[i].classList.remove("disabled");
                 } else {
-                    btn.classList.add("hidden");
+                    btns[i].classList.add("disabled");
                 }
             }
         }
@@ -88,9 +87,7 @@
         }
 
         function showOrder() {
-            // show orderHistory
-            // hide profileInfo
-            console.log("showorder")
+            orderHistory.setAttribute("display", "none")
             btnFlip()
         }
 
@@ -98,4 +95,3 @@
         orderBtn.addEventListener('click', showInfo)
     </script>
 {% endblock %}
-

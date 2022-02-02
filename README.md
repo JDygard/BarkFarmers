@@ -2,6 +2,7 @@
 
 ## Bark Farmers
 
+
 ### Web Presence
 Bark farmers is a firewood and smoking wood wholesaler in Indianapolis, Indiana, USA. A Google search for "indianapolis firewood" places them 14th in business links, and web links don't return them at all. It is also registered as a "Fishing area!" The only reason it registers at all is because of a review that mentions firewood.
 

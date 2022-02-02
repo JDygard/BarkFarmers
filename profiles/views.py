@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect, reverse
 from .models import UserProfile
 from django.contrib import messages
-from checkout.models import Order
+from checkout.models import Order, OrderLineItem
 from .forms import UserProfileForm
 from django.contrib.auth.decorators import login_required
 
@@ -36,6 +36,7 @@ def profile(request):
 
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
+    order_line_items = OrderLineItem.objects.get(order=order)
 
     template = 'checkout_success.html'
     context = {
