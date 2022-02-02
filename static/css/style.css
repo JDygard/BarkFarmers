@@ -41,10 +41,8 @@ footer {
 }
 
 .navbar-nav {
-    background-color: rgba(250,250,250,.7);
     max-width: fit-content;
     padding: 10px;
-    border-radius: 10px;
 }
 
 .navbar-nav > .nav-item {
@@ -170,6 +168,7 @@ footer {
     text-align: center;
     min-height: 400px;
     max-width: 80vw;
+    max-height:78vh;
     background-color: rgba(250,250,250,.8);
     border-radius: 50px;
     border: 2px solid black;
@@ -190,6 +189,12 @@ footer {
         padding: 30px;
         margin: auto;
     }
+}
+
+.profile-btn {
+    max-width: 100px;
+    margin: auto;
+    line-height: 14px;
 }
 
 .checkout-stripe-box {

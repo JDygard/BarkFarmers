@@ -13,8 +13,11 @@
                     <hr>
                 </div>
             </div>
+            <div class="row hidden">
+                <button class="btn btn-black rounded-1 profile-btn disabled">Saved Information</button><button class="btn btn-black rounded-1 profile-btn">Order History</button>
+            </div>
             <div class="row">
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-6" id="profile-info">
                     <p class="text-muted">Default Delivery Information</p>
                     <form action="{% url 'profile' %}" method="POST" class="mt-3">
                         {% csrf_token %}
@@ -22,7 +25,7 @@
                         <button class="btn btn-black rounded-0 text-uppercase float-right">Update Information</button>
                     </form>
                 </div>
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-6" id="order-history">
                     <p class="text-muted">Order History</p>
                     <div class="order-history table-responsive">
                         <table class="table table-sm table-borderless">
@@ -52,5 +55,47 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        orderHistory = document.getElementById("order-history")
+        profileInfo = document.getElementById("profile-info")
+        profileBtn = document.getElementsByClassName("profile-btn")[0]
+        orderBtn = document.getElementsByClassName("profile-btn")[1]
+        btns = document.getElementsByClassName("profile-btn")
+        console.log(btns)
+        $(document).on("load", function() {
+            if (screen.width < 993) {
+                // Show the hidden buttons
+                // Hide the order section
+            }
+        })
+
+        function btnFlip() {
+            for (btn in btns) {
+                console.log(btn)
+                if (btn.classList.contains("hidden")) {
+                    btn.classList.remove("hidden");
+                } else {
+                    btn.classList.add("hidden");
+                }
+            }
+        }
+
+        function showInfo() {
+            // Hide orderHistory
+            // show profileInfo
+            console.log("showinfo")
+            btnFlip()
+        }
+
+        function showOrder() {
+            // show orderHistory
+            // hide profileInfo
+            console.log("showorder")
+            btnFlip()
+        }
+
+        profileBtn.addEventListener('click', showOrder)
+        orderBtn.addEventListener('click', showInfo)
+    </script>
 {% endblock %}
 
