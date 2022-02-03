@@ -2,6 +2,12 @@ html, body {
     font-family: "Libre Baskerville", sans-serif;
     background-color: #F0F0F0;
 }
+
+/* Allauth-specific styling*/
+#signup-form > div {
+    padding-top:1rem;
+}
+
 /* Footer */
 footer {
     bottom: 0;
@@ -21,7 +27,7 @@ footer {
     width: 100vw;
     height: 100vh;
     max-height: 100%;
-}
+}l
 
 .bg-light {
     --bs-bg-opacity: 0;
@@ -31,11 +37,7 @@ footer {
 #learn-more h4 {
     text-align: center;
 }
-
-.navbar-brand  {
-    margin-right: 0;
-}
-
+l
 
 .navbar-brand > img {
     height: 10vh;
