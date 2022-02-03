@@ -37,6 +37,10 @@ footer {
 #learn-more h4 {
     text-align: center;
 }
+    
+.navBar {
+    position: absolute;
+}
 
 .navbar-brand  {
     margin-right: 0;
@@ -72,10 +76,6 @@ footer {
         background-color: rgba(250,250,250,.9);
         border-radius: 5px;
     }
-    
-    .navBar {
-        position: absolute;
-    }
 }
 /* index page styling */
 
@@ -89,6 +89,10 @@ footer {
 
 #hero-blurb > h1 {
     font-size: 54px;
+}
+
+#hero-image:first-child {
+    padding-bottom:140px;
 }
 
 .learn-more-text {
