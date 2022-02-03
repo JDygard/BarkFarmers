@@ -27,7 +27,7 @@ footer {
     width: 100vw;
     height: 100vh;
     max-height: 100%;
-}l
+}
 
 .bg-light {
     --bs-bg-opacity: 0;
@@ -37,7 +37,10 @@ footer {
 #learn-more h4 {
     text-align: center;
 }
-l
+
+.navbar-brand  {
+    margin-right: 0;
+}
 
 .navbar-brand > img {
     height: 10vh;
@@ -422,10 +425,12 @@ table {
     .navbar-brand {
         width: 100%;
         display: flex;
+        margin-right: 0;
     }
 
     .navbar-brand > img {
         margin: 0 auto;
+        height: 10vh;
     }
 
     .hidden-rows {
