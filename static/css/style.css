@@ -32,6 +32,9 @@ footer {
     text-align: center;
 }
 
+.navbar-brand  {
+    margin-right: 0;
+}
 
 
 .navbar-brand > img {
