@@ -103,6 +103,22 @@ footer {
     left: 90%;
 }
 
+#learn-more h2 {
+    text-align: center;
+    padding: 10px;
+}
+
+#learn-more p {
+    text-align: center;
+    padding-top: 12px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+a {
+    text-decoration: none;
+}
+
 .back-to-top h4, .back-to-top i, .back-to-top a {
     color: #f0f0f0;
     text-decoration: none;
