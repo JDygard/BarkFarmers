@@ -4,7 +4,7 @@ html, body {
 }
 
 /* Allauth-specific styling*/
-#signup-form > div {
+.account-box > form > div {
     padding-top:1rem;
 }
 
@@ -192,6 +192,8 @@ a {
     animation-name: store-fade-in;
     padding: 30px;
     margin: auto;
+    max-height: 80vh;
+    overflow: scroll;
 }
 
 .profile-box {
