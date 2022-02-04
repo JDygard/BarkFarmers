@@ -1,7 +1,9 @@
 /* Thanks to https://dev.to/leonardoschmittk/how-to-make-a-star-rating-with-js-36d3 for stars code */
 const ratingStars = [...document.getElementsByClassName("rating__star")];
 var idStars = document.getElementById("id_stars");
-idStars.setAttribute("hidden", true)
+if (idStars) {
+    idStars.setAttribute("hidden", true)
+}
 
 function executeRating(stars) {
     const starClassActive = "rating__star fas fa-star";
@@ -24,7 +26,9 @@ function executeRating(stars) {
         };
     });
 }
-executeRating(ratingStars);
+if (idStars) {
+    executeRating(ratingStars);
+}
 
 // Convert numerical star ratings to an icon for presentation
 var starEntries = document.getElementsByClassName("starSpan");
