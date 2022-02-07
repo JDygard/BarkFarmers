@@ -39,7 +39,9 @@ footer {
 }
 
 #learn-more a {
-    color: white;
+    color: white;  
+    min-width: 50px;
+    min-height: 50px;
 }
     
 .navBar {
@@ -197,7 +199,6 @@ a {
     padding: 30px;
     margin: auto;
     max-height: 80vh;
-    overflow: scroll;
 }
 
 .profile-box {

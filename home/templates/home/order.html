@@ -52,7 +52,7 @@
                                                 <a href="{% url 'home' %}#learn-more">How much wood is this?</a>
                                             </div>
                                             <a class="btn-dark btn-black rounded-0" id="continue_btn_hard">
-                                                <button type="submit">Continue<i class="fas fa-angle-double-down"></i></button>
+                                                <button type="submit">Continue</button>
                                             </a>
                                         </div>
                                         <div class="col-12">
@@ -88,7 +88,7 @@
                                 <form action="" class="form" method="POST">
                                     {% csrf_token %}
                                     <div class="form-row my-auto">
-                                        <input id="wood_type_soft" type="hidden" value="softwood">
+                                        <input name="wood_type" id="wood_type_soft" type="hidden" value="softwood">
                                         <div class="col-12">
                                             <p><strong>Pickup or Delivery?</strong></p>
                                             <select name="delivery_method" class="form-control rounded-0" id="id_delivery_method_soft">
@@ -114,7 +114,7 @@
                                                 <a href="{% url 'home' %}#learn-more">How much wood is this? </a>
                                             </div>
                                             <a class="btn-dark btn-black rounded-0" id="continue_btn_soft">
-                                                <span>Continue<i class="fas fa-angle-double-down"></i></span>
+                                                <button type="submit">Continue</i></button>
                                             </a>
                                         </div>
                                         <div class="col-12">
