@@ -37,6 +37,10 @@ footer {
 #learn-more h4 {
     text-align: center;
 }
+
+#learn-more a {
+    color: white;
+}
     
 .navBar {
     position: absolute;
@@ -213,7 +217,7 @@ a {
 @media screen and (max-width: 992px) {
     .profile-box {
         text-align: center;
-        min-height: 400px;
+        min-height: 75vh;
         max-width: 100vw;
         background-color: rgba(250,250,250,.8);
         animation-duration:1s;

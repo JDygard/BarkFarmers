@@ -38,6 +38,11 @@ def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     order_line_items = OrderLineItem.objects.get(order=order)
 
+    request.session['wood_type'] = order_line_items.product.name
+    request.session['delivery_method'] = order_line_items.delivery_method
+    request.session['product_type'] = order_line_items.product_type
+    request.session['quantity'] = order_line_items.quantity
+
     template = 'checkout_success.html'
     context = {
         'order': order,

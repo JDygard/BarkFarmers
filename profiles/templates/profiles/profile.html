@@ -13,8 +13,8 @@
                     <hr>
                 </div>
             </div>
-            <div class="row hidden">
-                <button class="btn btn-black rounded-1 profile-btn disabled">Saved Information</button><button class="btn btn-black rounded-1 profile-btn">Order History</button>
+            <div class="row">
+                <button class="btn btn-black rounded-1 profile-btn disabled">Saved Info</button><button class="btn btn-black rounded-1 profile-btn">Order History</button>
             </div>
             <div class="row">
                 <div class="col-12 col-lg-6" id="profile-info">
@@ -59,13 +59,21 @@
         profileBtn = document.getElementsByClassName("profile-btn")[0]
         orderBtn = document.getElementsByClassName("profile-btn")[1]
         btns = document.getElementsByClassName("profile-btn")
-        console.log(btns)
-        $(document).on("load", function() {
+
+        function btnToggle() {
             if (screen.width < 993) {
-                // Show the hidden buttons
-                // Hide the order section
+                orderHistory.style.display = "none";
+                for (let i = 0;i < btns.length;i++) {
+                    btns[i].style.display = "block"
+                }                
+            } else {
+                orderHistory.style.display = "block";
+                profileInfo.style.display = "block";
+                for (let i = 0;i < btns.length;i++) {
+                    btns[i].style.display = "none"
+                }                
             }
-        })
+        }
 
         function btnFlip() {
             for (let i = 0;i < btns.length;i++) {
@@ -78,17 +86,19 @@
         }
 
         function showInfo() {
-            // Hide orderHistory
-            // show profileInfo
-            console.log("showinfo")
+            orderHistory.style.display = "block";
+            profileInfo.style.display = "none";
             btnFlip()
         }
 
         function showOrder() {
-            orderHistory.setAttribute("display", "none")
+            orderHistory.style.display = "none";
+            profileInfo.style.display = "block";
             btnFlip()
         }
 
+        $(document).on("load", btnToggle())
+        window.addEventListener("resize", btnToggle)
         profileBtn.addEventListener('click', showOrder)
         orderBtn.addEventListener('click', showInfo)
     </script>
