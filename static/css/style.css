@@ -38,7 +38,7 @@ footer {
     text-align: center;
 }
 
-#learn-more a {
+#learn-more > a {
     color: white;  
     min-width: 50px;
     min-height: 50px;
