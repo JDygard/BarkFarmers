@@ -225,6 +225,7 @@ a {
         animation-name: store-fade-in;
         padding: 30px;
         margin: auto;
+        overflow-y: scroll;
     }
 }
 
