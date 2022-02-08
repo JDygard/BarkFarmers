@@ -150,6 +150,15 @@
                                     <div class="form-row my-auto">
                                         <input id="wood-type" type="hidden" value="cookingwood">
                                         <div class="col-12">
+                                            <p><strong>What cooking woods?</strong></p>
+                                            <select name="wood-type" id="wood_type_cooking">
+                                                <option value="">Select cooking wood</option>
+                                                <option value="apple">Apple</option>
+                                                <option value="maple">Maple</option>
+                                                <option value="hickory">Hickory</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
                                             <p><strong>Pickup or Delivery?</strong></p>
                                             <select name="delivery_method" class="form-control rounded-0" id="id_delivery_method_cooking">
                                                 <option value="" selected>Select delivery method</option>
@@ -194,7 +203,7 @@
             </div>
         </div>
     </div>
-    <script>
+    <script type="">
         {% for product in products %}
             var {{ product.name }} = {
                 "price": {{ product.price }},

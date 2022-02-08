@@ -95,7 +95,7 @@ var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal
 // For loop that builds the JS for the hard and soft woods forms
 
 var checkout = document.getElementById("checkout");
-var element_IDs = ["_soft", "_hard"]
+var element_IDs = ["_soft", "_hard", "_cooking"]
 for (i = 0; i < element_IDs.length; i++) {
     // Defining the select elements
     let deliverySelect = document.getElementById('id_delivery_method' + element_IDs[i]);
