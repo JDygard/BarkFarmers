@@ -52,7 +52,7 @@
                                                 <a href="{% url 'home' %}#learn-more">How much wood is this?</a>
                                             </div>
                                             <a class="btn-dark btn-black rounded-0" id="continue_btn_hard">
-                                                <button type="submit">Continue</button>
+                                                <button type="submit" class="btn btn-black rounded-0">Continue</button>
                                             </a>
                                         </div>
                                         <div class="col-12">
@@ -114,6 +114,7 @@
                                                 <a href="{% url 'home' %}#learn-more">How much wood is this? </a>
                                             </div>
                                             <a class="btn-dark btn-black rounded-0" id="continue_btn_soft">
+                                                <button type="submit" class="btn btn-black rounded-0">Continue</button>
                                             </a>
                                         </div>
                                         <div class="col-12">
@@ -172,7 +173,7 @@
                                                 <span>2.5lb bags.</span>
                                             </div>
                                             <a class="btn-dark btn-black rounded-0" id="continue_btn_cooking">
-                                                <button type="submit">Continue</i></button>
+                                                <button type="submit" class="btn btn-black rounded-0">Continue</button>
                                             </a>
                                         </div>
                                         <div class="col-12">
@@ -180,8 +181,12 @@
                                     </div>
                                     <div id="checkout_section_cooking">
                                     </div>
-                                    <div>
-                                        <p><strong id="grand-total-cook">$0.00</strong></p>
+                                    <div class="h-auto">
+                                        <table class="table table-borderless table-sm">
+                                            <tbody id="line_items_cooking">
+                                            </tbody>
+                                        </table>
+                                        <p>Total:<strong id="grand_total_cooking">$0.00</strong></p>
                                     </div>
                                 </form>
                             </div>
@@ -194,8 +199,7 @@
     <script type="">
         {% for product in products %}
             var {{ product.name }} = {
-                "price": {{ product.price }},
-                "weight": {{ product.weight }}
+                "price": {{ product.price }}
             }
         {% endfor %}
         var bagDeposit = {{ shipping_data.bag_deposit }}

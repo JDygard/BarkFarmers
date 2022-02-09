@@ -13,23 +13,26 @@ let cooking_order = function() {
     }
 }
 
-delivery_select_cooking.addEventListener("click", cooking_order)
+delivery_select_cooking.addEventListener("click", cooking_order);
 
 // This function is called every time the user changes an option to recalculate the price of the order
 var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal, quantitySelect, lineItems, totalField) {
     // establish variables
 
     let total = 0;
-    let string = ""
+    let string = "";
     let delivery = 0;
     let deposit = 0;
     let stacking = 0;
-    let x = "<tr><td>"
-    let y = "</td></tr>"
-    let yx = "</td><td> </td><td>"
+    let x = "<tr><td>";
+    let y = "</td></tr>";
+    let yx = "</td><td> </td><td>";
     // calculate fees and total
 
     if (deliverySelect.value == "delivery") {
+        if (woodSelect.value !== "softwood" && woodSelect.value !== "hardwood") {
+            console.log("Please work.")
+        }
         delivery = deliveryCharge;
         total += deliveryCharge;
     }
@@ -51,19 +54,19 @@ var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal
     if (quantitySelect.style.opacity != 0) {
         if (woodSelect.value == "hardwood") {
             let woodTotal = hardwood.price * quantityTotal.value;
-            total += woodTotal
+            total += woodTotal;
             if (quantityTotal.value > 1) {
-                string += x + quantityTotal.value + " ricks of hardwood: " + yx + woodTotal.toFixed(2) + y
+                string += x + quantityTotal.value + " ricks of hardwood: " + yx + woodTotal.toFixed(2) + y;
             } else {
-                string += x + quantityTotal.value + " rick of hardwood: " + yx + woodTotal.toFixed(2) + y
+                string += x + quantityTotal.value + " rick of hardwood: " + yx + woodTotal.toFixed(2) + y;
             }
         } else if (woodSelect.value == "softwood") {
             let woodTotal = softwood.price * quantityTotal.value;
-            total += woodTotal
+            total += woodTotal;
             if (quantityTotal.value > 1) {
-                string += x + quantityTotal.value + " ricks of softwood: " + yx + woodTotal.toFixed(2) + y
+                string += x + quantityTotal.value + " ricks of softwood: " + yx + woodTotal.toFixed(2) + y;
             } else {
-                string += x + quantityTotal.value + " rick of softwood: " + yx + woodTotal.toFixed(2) + y
+                string += x + quantityTotal.value + " rick of softwood: " + yx + woodTotal.toFixed(2) + y;
             }
         }
     }
@@ -71,31 +74,31 @@ var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal
     // Adjust fields in the "grand total" section
 
     if (delivery == 0) {
-        delivery.innerHTML = ""
+        delivery.innerHTML = "";
     } else {
-        string += x + "Delivery fee (standard) " + yx + delivery.toFixed(2) + y
+        string += x + "Delivery fee (standard) " + yx + delivery.toFixed(2) + y;
     }
 
     if (deposit == 0) {
-        deposit.innerHTML = ""
+        deposit.innerHTML = "";
     } else {
-        string += x + "Bag deposit " + yx + deposit.toFixed(2) + y
+        string += x + "Bag deposit " + yx + deposit.toFixed(2) + y;
     }
 
     if (stacking == 0) {
-        stacking.innerHTML = ""
+        stacking.innerHTML = "";
     } else {
-        string += x + "Hand stacking fee " + yx + stacking.toFixed(2) + y
+        string += x + "Hand stacking fee " + yx + stacking.toFixed(2) + y;
     }
 
     lineItems.innerHTML = string;
-    totalField.innerHTML = total.toFixed(2)
+    totalField.innerHTML = total.toFixed(2);
 }
 
-// For loop that builds the JS for the hard and soft woods forms
+// For loop that builds the JS for the forms
 
 var checkout = document.getElementById("checkout");
-var element_IDs = ["_soft", "_hard", "_cooking"]
+var element_IDs = ["_soft", "_hard", "_cooking"];
 for (i = 0; i < element_IDs.length; i++) {
     // Defining the select elements
     let deliverySelect = document.getElementById('id_delivery_method' + element_IDs[i]);
@@ -109,7 +112,7 @@ for (i = 0; i < element_IDs.length; i++) {
     let continue_btn = document.getElementById("continue_btn" + element_IDs[i]);
     let checkoutSection = document.getElementById("checkout_section" + element_IDs[i]);
     let quantitySelect = document.getElementById('quantity_select' + element_IDs[i]);
-    let quantityTotal = quantitySelect.firstElementChild.nextElementSibling.firstElementChild
+    let quantityTotal = quantitySelect.firstElementChild.nextElementSibling.firstElementChild;
     
     // Defining the bag breakdown
     let grandTotal = document.getElementById("grand_total" + element_IDs[i]);
@@ -123,17 +126,17 @@ for (i = 0; i < element_IDs.length; i++) {
         if (deliverySelect.value !== "" && typeSelect.value !== "") {
             quantitySelect.style.height = "auto";
             quantitySelect.style.opacity = 1;
-            updateTotal(woodType, deliverySelect, typeSelect, quantityTotal, quantitySelect, lineItems, grandTotal)
+            updateTotal(woodType, deliverySelect, typeSelect, quantityTotal, quantitySelect, lineItems, grandTotal);
         }
     
         // Remove "hand-stacked" from type when pickup is selected
         if (deliverySelect.value == "pickup" && typeSelect == "stacked"){
-            stacked_option.setAttribute("disabled", false)
-            typeSelect.value = ""
+            stacked_option.setAttribute("disabled", false);
+            typeSelect.value = "";
         } else if (deliverySelect.value == "pickup") {
-            stacked_option.setAttribute("disabled", false)
+            stacked_option.setAttribute("disabled", false);
         } else {
-            stacked_option.removeAttribute("disabled")
+            stacked_option.removeAttribute("disabled");
         }
     }
 
@@ -185,19 +188,18 @@ let reOrient = function() {
             vertical = true;
         }
         for (let i = 0; i < storeItems.length; i++){
-            let storeItem = storeItems[i].parentNode.parentNode
-            let classes = storeItem.classList
-            let headerText = storeItems[i].firstElementChild.nextElementSibling
+            let storeItem = storeItems[i].parentNode.parentNode;
+            let classes = storeItem.classList;
+            let headerText = storeItems[i].firstElementChild.nextElementSibling;
             storeItems[i].firstElementChild.nextElementSibling.setAttribute("class", "store-text-portrait");
             if (classes.contains("active-store-item-portrait") || classes.contains("col-md-10")) {
                 storeItem.setAttribute("class", "col-md-12 active-store-item-portrait");
-                headerText.classList.add("active-text")
-
+                headerText.classList.add("active-text");
             } else if (classes.contains("minimized-store-item-portrait") || classes.contains("col-md-1")) {
-                storeItem.setAttribute("class", "col-md-12 store-item minimized-store-item-portrait")
+                storeItem.setAttribute("class", "col-md-12 store-item minimized-store-item-portrait");
 
-                headerText.classList.remove("minimized-text", "store-text-portrait")
-                headerText.classList.add("store-text-minimized-portrait")
+                headerText.classList.remove("minimized-text", "store-text-portrait");
+                headerText.classList.add("store-text-minimized-portrait");
             } else {
                 storeItem.setAttribute("class", "col-md-12 store-item-portrait");
             }
@@ -215,7 +217,7 @@ let reOrient = function() {
                 storeItems[i].parentNode.parentNode.setAttribute("class", "col-md-10 active-store-item");
             } else if (classes.contains("minimized-store-item-portrait") || classes.contains("col-md-1")) {
                 storeItems[i].parentNode.parentNode.setAttribute("class", "col-md-1 store-item");
-                storeItems[i].firstElementChild.nextElementSibling.classList.add("minimized-text")
+                storeItems[i].firstElementChild.nextElementSibling.classList.add("minimized-text");
             } else {
                 storeItems[i].parentNode.parentNode.setAttribute("class", "col-md-4 store-item");
             }
@@ -318,14 +320,14 @@ for (let t = 0; t < storeItems.length; t++) {
                 headerHide.classList.add("minimized-text");
 
                 let paragraphHide = hideElements.lastElementChild;
-                paragraphHide.classList.add("hidden-items")
+                paragraphHide.classList.add("hidden-items");
 
-                let imageHide = hideElements.firstElementChild
-                imageHide.classList.add("hidden-items")
+                let imageHide = hideElements.firstElementChild;
+                imageHide.classList.add("hidden-items");
 
-                let formHide = hideElements.parentNode.lastElementChild
-                    formHide.classList.add("hidden-items");
-                }
+                let formHide = hideElements.parentNode.lastElementChild;
+                formHide.classList.add("hidden-items");
+            }
             // Section being revealed/adjusted
             collapse.setAttribute("class", "col-md-10 active-store-item");
 
@@ -334,12 +336,12 @@ for (let t = 0; t < storeItems.length; t++) {
 
             let header = event.target.firstElementChild.nextElementSibling;
             header.classList.add("active-text");
-            header.classList.remove("minimized-text")
+            header.classList.remove("minimized-text");
 
             let image = event.target.firstElementChild;
-            image.classList.remove("hidden-items")
+            image.classList.remove("hidden-items");
 
-            let form = event.target.parentNode.lastElementChild
+            let form = event.target.parentNode.lastElementChild;
             form.classList.remove("hidden-items");
         }
     });
