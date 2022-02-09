@@ -130,13 +130,15 @@ for (i = 0; i < element_IDs.length; i++) {
         }
     
         // Remove "hand-stacked" from type when pickup is selected
-        if (deliverySelect.value == "pickup" && typeSelect == "stacked"){
-            stacked_option.setAttribute("disabled", false);
-            typeSelect.value = "";
-        } else if (deliverySelect.value == "pickup") {
-            stacked_option.setAttribute("disabled", false);
-        } else {
-            stacked_option.removeAttribute("disabled");
+        if (stacked_option !== null) {
+            if (deliverySelect.value == "pickup" && typeSelect == "stacked"){
+                stacked_option.setAttribute("disabled", false);
+                typeSelect.value = "";
+            } else if (deliverySelect.value == "pickup") {
+                stacked_option.setAttribute("disabled", false);
+            } else {
+                stacked_option.removeAttribute("disabled");
+            }
         }
     }
 
