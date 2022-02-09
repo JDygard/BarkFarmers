@@ -30,7 +30,7 @@ footer {
 }
 
 #hero-image:first.child {
-    margin-bottom: 200px;
+    margin-bottom: 10vh;
 }
 
 .bg-light {
