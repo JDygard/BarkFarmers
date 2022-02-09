@@ -29,6 +29,10 @@ footer {
     max-height: 100%;
 }
 
+#hero-image:first.child {
+    margin-bottom: 200px;
+}
+
 .bg-light {
     --bs-bg-opacity: 0;
     background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity)) !important;
