@@ -287,8 +287,6 @@ a {
         width: 100vw;
         color: #e3e6f2;
         background-color: rgba(250,250,250,.9);
-        border-radius: 0;
-        border: none;
         box-shadow: none;
         animation-duration: 1s;
         animation-name: store-fade-in;
