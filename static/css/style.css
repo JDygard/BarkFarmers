@@ -118,6 +118,14 @@ footer {
     transition: 0.5s;
 }
 
+.learn-more-text h4, .learn-more-text i {
+    color: white;
+}
+
+.learn-more-text h4:hover, .learn-more-text:hover {
+    color: #fafafa;
+}
+
 .back-to-top {
     background-color: rgba(0,0,0,0.4);
     border-radius: 10px;
