@@ -114,7 +114,6 @@
                                                 <a href="{% url 'home' %}#learn-more">How much wood is this? </a>
                                             </div>
                                             <a class="btn-dark btn-black rounded-0" id="continue_btn_soft">
-                                                <button type="submit">Continue</i></button>
                                             </a>
                                         </div>
                                         <div class="col-12">
@@ -151,7 +150,7 @@
                                         <input name="product_type" type="hidden" id="id_product_type_cooking">
                                         <div class="col-12">
                                             <p><strong>What cooking woods?</strong></p>
-                                            <select name="wood-type" id="wood_type_cooking">
+                                            <select name="wood_type" id="wood_type_cooking" class="form-control rounded-0">
                                                 <option value="">Select cooking wood</option>
                                                 <option value="apple">Apple</option>
                                                 <option value="maple">Maple</option>
@@ -163,28 +162,17 @@
                                             <select name="delivery_method" class="form-control rounded-0" id="id_delivery_method_cooking">
                                                 <option value="" selected>Select delivery method</option>
                                                 <option value="pickup">Pick up from Bark Farmers</option>
-                                                <option value="delivery">My Home Delivery</option>
+                                                <option value="delivery">UPS home delivery</option>
                                             </select>
                                         </div>
                                         <div id="quantity_select_cooking">
                                             <p><strong>How much do you want?</strong></p>
                                             <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button class="decrement-qty btn-dark btn-sm btn-black rounded-0" data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-                                                        <span><i class="fas fa-minus fa-sm"></i></span>
-                                                    </button>
-                                                </div>
                                                 <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" class="form-control qty_input">
-                                                <a href="{% url 'home' %}#learn-more">How much wood is this?</a>
-                                                <div class="input-group-append">
-                                                    <button class="increment-qty btn-dark btn-sm btn-black rounded-0" data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                                        <span><i class="fas fa-plus fa-sm"></i></span>
-                                                    </button>
-                                                </div>
+                                                <span>2.5lb bags.</span>
                                             </div>
-                                            <p><strong data-toggle="tooltip" data-placement="bottom" title="I dunno">ricks</strong></p>
                                             <a class="btn-dark btn-black rounded-0" id="continue_btn_cooking">
-                                                <span>Continue<i class="fas fa-angle-double-down"></i></span>
+                                                <button type="submit">Continue</i></button>
                                             </a>
                                         </div>
                                         <div class="col-12">
@@ -207,7 +195,7 @@
         {% for product in products %}
             var {{ product.name }} = {
                 "price": {{ product.price }},
-                "weight": {{ product.weight }},
+                "weight": {{ product.weight }}
             }
         {% endfor %}
         var bagDeposit = {{ shipping_data.bag_deposit }}

@@ -36,6 +36,7 @@ function showInfo() {
 }
 
 function showOrder() {
+    console.log("what the fuck is happening right now")
     orderHistory.style.display = "none";
     profileInfo.style.display = "block";
     btnFlip()
