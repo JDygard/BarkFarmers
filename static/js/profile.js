@@ -42,6 +42,6 @@ function showOrder() {
 }
 
 $(document).on("load", btnToggle())
-window.addEventListener("resize", btnToggle)
-profileBtn.addEventListener('click', showOrder)
-orderBtn.addEventListener('click', showInfo)
+window.addEventListener("resize", btnToggle())
+profileBtn.addEventListener('click', showOrder())
+orderBtn.addEventListener('click', showInfo())
