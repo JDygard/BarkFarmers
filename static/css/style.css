@@ -50,6 +50,7 @@ footer {
     
 .navbar {
     position: absolute;
+    width:95%;
 }
 
 .navbar-brand  {
