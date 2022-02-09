@@ -148,7 +148,7 @@
                                 <form action="" class="form" method="POST">
                                     {% csrf_token %}
                                     <div class="form-row my-auto">
-                                        <input id="wood-type" type="hidden" value="cookingwood">
+                                        <input name="product_type" type="hidden" id="id_product_type_cooking">
                                         <div class="col-12">
                                             <p><strong>What cooking woods?</strong></p>
                                             <select name="wood-type" id="wood_type_cooking">
@@ -183,14 +183,14 @@
                                                 </div>
                                             </div>
                                             <p><strong data-toggle="tooltip" data-placement="bottom" title="I dunno">ricks</strong></p>
-                                            <a class="btn-dark btn-black rounded-0" id="continue_btn_soft">
+                                            <a class="btn-dark btn-black rounded-0" id="continue_btn_cooking">
                                                 <span>Continue<i class="fas fa-angle-double-down"></i></span>
                                             </a>
                                         </div>
                                         <div class="col-12">
                                         </div>
                                     </div>
-                                    <div id="checkout_section_cook">
+                                    <div id="checkout_section_cooking">
                                     </div>
                                     <div>
                                         <p><strong id="grand-total-cook">$0.00</strong></p>

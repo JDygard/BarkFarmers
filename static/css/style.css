@@ -101,8 +101,8 @@ footer {
     font-size: 54px;
 }
 
-#hero-image:first-child {
-    padding-bottom:140px;
+#hero-image > div:first-child {
+    padding-bottom: 20vh;
 }
 
 .learn-more-text {
