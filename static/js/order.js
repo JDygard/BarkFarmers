@@ -71,7 +71,7 @@ var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal
                 string += x + quantityTotal.value + " rick of softwood: " + yx + woodTotal.toFixed(2) + y;
             }
         } else {
-            let woodTotal = woodSelect.value.price * quantityTotal.value;
+            let woodTotal = apple.price * quantityTotal.value;
             total += woodTotal;
             string += x + quantityTotal.value + " bags of cooking wood: " + yx + woodTotal.toFixed(2) + y;
         }
