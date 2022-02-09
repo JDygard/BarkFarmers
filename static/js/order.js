@@ -31,10 +31,12 @@ var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal
 
     if (deliverySelect.value == "delivery") {
         if (woodSelect.value !== "softwood" && woodSelect.value !== "hardwood") {
-            console.log("Please work.")
+            delivery = 3.99;
+            total += delivery;
+        } else {
+            delivery = deliveryCharge;
+            total += deliveryCharge;
         }
-        delivery = deliveryCharge;
-        total += deliveryCharge;
     }
 
     if (typeSelect.value == "bag") {
@@ -68,6 +70,10 @@ var updateTotal = function(woodSelect, deliverySelect, typeSelect, quantityTotal
             } else {
                 string += x + quantityTotal.value + " rick of softwood: " + yx + woodTotal.toFixed(2) + y;
             }
+        } else {
+            let woodTotal = woodSelect.value.price * quantityTotal.value;
+            total += woodTotal;
+            string += x + quantityTotal.value + " bags of cooking wood: " + yx + woodTotal.toFixed(2) + y;
         }
     }
 
@@ -154,24 +160,6 @@ for (i = 0; i < element_IDs.length; i++) {
     deliverySelect.addEventListener('load', optionReset);
     quantityTotal.addEventListener('load', optionReset);
     typeSelect.addEventListener('load', optionReset);
-    continue_btn.addEventListener("click", function() {
-        // Minimize other options
-        deliverySelect.previousElementSibling.style.height = 0;
-        typeSelect.previousElementSibling.style.height = 0;
-        quantitySelect.firstElementChild.style.height = 0;
-        continue_btn.style.height = 0;
-        deliverySelect.previousElementSibling.style.opacity = 0;
-        typeSelect.previousElementSibling.style.opacity = 0;
-        quantitySelect.firstElementChild.style.opacity = 0;
-        continue_btn.style.opacity = 0;
-        // Disappear the line items:
-        lineItems.parentElement.style.display = "none";
-        // Reveal checkout
-        checkoutSection.style.height = "auto";
-        checkoutSection.style.opacity = 1;
-        checkoutSection.style.overflow = "scroll";
-        checkoutSection.appendChild(checkout);
-    })
 };
 
 
