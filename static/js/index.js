@@ -24,7 +24,7 @@ function transformText(e){
         if (atTop) {
             if (window.scrollY > 0) {
                 atTop = false;
-                learnMore.innerHTML = "<a href='#hero-image'><h4>Back to Top</h4><i class='fas fa-chevron-up'></i></a>"
+                learnMore.innerHTML = "<a href='#hero-image'><i class='fas fa-chevron-up'></i><h4>Back to Top</h4></a>"
                 learnMore.className = learnMoreActiveClass
             }
         } else {
