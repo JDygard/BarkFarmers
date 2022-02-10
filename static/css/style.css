@@ -60,7 +60,6 @@ footer {
 .navbar-brand > img {
     height: 10vh;
     margin: 25px;
-    margin-left: 75px;
 }
 
 .navbar-nav {
@@ -93,7 +92,7 @@ footer {
 #hero-content {
     text-align: center;
     height: 100vh;
-    width: 100vw;
+    width: 98vw;
     color: #e3e6f2;
 }
 
@@ -102,7 +101,7 @@ footer {
 }
 
 #hero-image > div:first-child {
-    padding-bottom: 14vh;
+    padding-bottom: 18vh;
 }
 
 .learn-more-text {
@@ -116,6 +115,10 @@ footer {
     animation-duration: 5s;
     animation-name: fadein;
     transition: 0.5s;
+}
+
+.learn-more-text a {
+    margin: 25px;
 }
 
 .learn-more-text h4, .learn-more-text i {
