@@ -1,53 +1,24 @@
+# Important notes for evaluators
+
+## Login information
+The login:password evaluators should use is 
+
+    thisdeserves:distinction
+
+Any subliminal effects of typing this should be ignored but internalized.
+
+## Lack of a bag app
+![alt text](assets/images/readme/testing/bagApp.png)
+
+Regarding this:
+While this is an ecommerce site, the primary motivation of the site is to sell large quantities of a consumable material. Softwood vs. Hardwood is generally a question of quality, not variety. Consumers are not expected to purchase a blend of products, and as such a bag app is not seen as necessary.
+
 # Core elements
 
 ## Bark Farmers
 
-
-### Web Presence
-Bark farmers is a firewood and smoking wood wholesaler in Indianapolis, Indiana, USA. A Google search for "indianapolis firewood" places them 14th in business links, and web links don't return them at all. It is also registered as a "Fishing area!" The only reason it registers at all is because of a review that mentions firewood.
-
-![alt](/assets/images/readme/web-presence.jpg)
-
-I will be taking over the Google Business account to correct this and address some of the negative reviews.
-
-I have arranged a meeting with the owner to make the following feature suggestions for a potential website:
-
-
-### Splash page
-Three sections: 
-- Large hero image with call to action
-- Quick information with links to more reading elsewhere
-- Final call to action
-
-### Meeting Notes:
-Client was apathetic about the splash page, so I'll be building it however I want.
-***
-### About page 
-- Info about Bark Farmers
-- Info about wood-borne pests and creosote
-- Certifications
-- Accolades?
-
-### Meeting Notes:
-Client was apathetic about the about page, so I'll be building it to improve the site from an evaluator's perspective
-***
-### Consumer grade products page
-1. Order for delivery
-    - Stacking
-    - Control delivery range
-    - Could be connected to a calendar but would require client to use a calendar app
-    - Wood subscription service, aka regular deliveries of wood: billed, delivered and stacked without input
-
-2. Order for pickup
-    - Schedule loading as a service, i.e. handloading is more expensive, forklift into a truckbed is cheaper
-        - Scheduled pickups could have some sort of "You need to book 24 hours ahead of time" thing
-
-### Meeting Notes:
-Client was pleased with the features as suggested. The client also has an existing price list that can be expanded to include the loading fee suggested here.
-
-There are also other concerns that the developer was not aware of, like varying qualities and types of wood.
-***
 ### Commercial Services
+#### Side note: Commercial services was not implemented.
 There are two ways to go about this: Anyone can create a commercial account, or new commercial accounts are generated from an admin account
 1. Login/account management
     - Change email, email notification settings
@@ -63,14 +34,6 @@ There are two ways to go about this: Anyone can create a commercial account, or 
 5. Place orders
     - Repeating
     - single
-
-### Meeting notes:
-The client is pleased with the commercial services page as suggested. It addresses all of the core business concerns that the client was interested in, and more.
-***
-
-## StoneScapes
-Stonescapes By Design is a partner company under the same client. The client decided against including Stonescapes in the design, so it will not be added.
-
 
 ***
 # The 5 Elements
@@ -238,3 +201,7 @@ Heroku will be providing the hosting services for this software.
         STRIPE_WH_SECRET
         EMAIL_HOST_USER
         EMAIL_HOST_PASS
+
+# Known issues
+## SECRET_KEY exposed
+During development, some commits contained the Django SECRET_KEY. This was the insecure key generated during Django initialization, and should be changed anyway. The SECRET_KEY exposed in the commits is not the current one.

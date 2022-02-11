@@ -23,7 +23,7 @@
                                 </p>
                             </div>
                             <div class="col-lg-6 col-md-12 hidden-items text-black pl-0 form-box">
-                                <form action="" class="form" method="POST" id="select_form">
+                                <form action="{% url 'checkout' %}" class="form" method="POST" id="select_form">
                                     {% csrf_token %}
                                     <div class="form-row my-auto">
                                         <input name="wood_type" id="wood_type_hard" type="hidden" value="hardwood">
@@ -83,7 +83,7 @@
                                 </p>
                             </div>
                             <div class="col-lg-6 col-md-12 hidden-items text-black pl-0 form-box">
-                                <form action="" class="form" method="POST">
+                                <form action="{% url 'checkout' %}" class="form" method="POST">
                                     {% csrf_token %}
                                     <div class="form-row my-auto">
                                         <input name="wood_type" id="wood_type_soft" type="hidden" value="softwood">
@@ -141,7 +141,7 @@
                                 </p>
                             </div>
                             <div class="col-lg-6 col-md-12 hidden-items text-black pl-0 form-box">
-                                <form action="" class="form" method="POST">
+                                <form action="{% url 'checkout' %}" class="form" method="POST">
                                     {% csrf_token %}
                                     <div class="form-row my-auto">
                                         <input name="product_type" type="hidden" id="id_product_type_cooking">
@@ -190,7 +190,7 @@
             </div>
         </div>
     </div>
-    <script type="">
+    <script>
         {% for product in products %}
             var {{ product.name }} = {
                 "price": {{ product.price }}

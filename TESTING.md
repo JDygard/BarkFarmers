@@ -16,6 +16,15 @@ With all due respect to the w3c validator, the scale property does exist. It is 
 
 And as much as CSS variables are not statically checked, it works in this use-case.
 
+## HTML Validation
+### Index.html
+
+### Order.html
+
+### Review.html
+
+### Register.html
+
 # Automated Testing
 
 # Responsiveness Test
