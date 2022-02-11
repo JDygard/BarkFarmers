@@ -48,7 +48,7 @@
                                         <div id="quantity_select_hard">
                                             <p><strong>How much do you want?</strong></p>
                                             <div class="input-group">
-                                                <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" class="form-control qty_input">
+                                                <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_hard" class="form-control qty_input">
                                                 <a href="{% url 'home' %}#learn-more">How much wood is this?</a>
                                             </div>
                                             <button type="submit" class="btn btn-black rounded-0" id="continue_btn_hard">Continue</button>
@@ -108,7 +108,7 @@
                                         <div id="quantity_select_soft">
                                             <p><strong>How much do you want?</strong></p>
                                             <div class="input-group">
-                                                <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" class="form-control qty_input">
+                                                <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_soft" class="form-control qty_input">
                                                 <a href="{% url 'home' %}#learn-more">How much wood is this? </a>
                                             </div>
                                             <button type="submit" class="btn btn-black rounded-0" id="continue_btn_soft">Continue</button>
@@ -165,7 +165,7 @@
                                         <div id="quantity_select_cooking">
                                             <p><strong>How much do you want?</strong></p>
                                             <div class="input-group">
-                                                <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" class="form-control qty_input">
+                                                <input type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_cooking" class="form-control qty_input">
                                                 <span>2.5lb bags.</span>
                                             </div>
                                             <button type="submit" class="btn btn-black rounded-0" id="continue_btn_cooking">Continue</button>
