@@ -196,6 +196,18 @@ For a cleaner look to paragraphs and other information blocks, Montserrat has be
 ![alt text](assets/images/readme/wireframing/store-order.png)
 ![alt text](assets/images/readme/wireframing/commercial.png)
 
+
+# Database Structure
+Bark Farmer's models are centered around Order, which is the actual commercial center of the site. Reviews and logins are associated with a particular user, who is represented by a profile. Products are associated with OrderLineitems, which, along with the UserProfile, is associated with the Order.
+![alt text](assets/images/readme/DBstructFinal.png)
+
+
+# Deviations from the plan
+This was originally going to be a project built for actual commercial use by Bark Farmers in Indianapolis, IN, USA. However, the owner of the company ghosted me a few weeks into the project, and the remainder of the project was built solely for the coursework. Several deviations were made from the original plan for design purposes, due to the lack of owner input.
+
+## Commercial page
+Initially there was going to be a page for commercial users. This was scrapped due to time.
+
 # Deployment
 This software was deployed using AWS S3 and Heroku web interface.
 
@@ -215,12 +227,14 @@ Heroku will be providing the hosting services for this software.
 3. Select a region and unique app name relevant to your use-case.
 4. With your new app created, click on the "Deploy" tab.
 5. In the "Deployment method" row, select GitHub. Type in the name of your cloned GitHub repository.
-6. Click on the "Settings" tab and find the "Config Vars" row. Click "Reveal Config Vars" Add the following key:value pairs:
+6. Click on the "Settings" tab and find the "Config Vars" row. Click "Reveal Config Vars" Add the following key:value pairs with your own data (Ignore AWS settings if not using AWS):
 
-
-        AWS_ACCESS_KEY_ID:      // Enter your aws access key from the AWS step
-        AWS_SECRET_ACCESS_KEY:  // Enter your aws secret access key from the AWS step
-        USE_AWS: TRUE
-
-
-## Amazon Web Services
+        AWS_ACCESS_KEY_ID
+        AWS_SECRET_ACCESS_KEY
+        DATABASE_URL
+        SECRET_KEY
+        STRIPE_SECRET_KEY
+        USE_AWS = FALSE
+        STRIPE_WH_SECRET
+        EMAIL_HOST_USER
+        EMAIL_HOST_PASS
