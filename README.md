@@ -13,6 +13,8 @@ Any subliminal effects of typing this should be ignored but internalized.
 Regarding this:
 While this is an ecommerce site, the primary motivation of the site is to sell large quantities of a consumable material. Softwood vs. Hardwood is generally a question of quality, not variety. Consumers are not expected to purchase a blend of products, and as such a bag app is not seen as necessary.
 
+My mentor suggested adding a few features to offset the lack of a bag. His suggestions were a review app, and the ability to re-order previous orders from the profile. Both of these are in.
+
 # Core elements
 
 ## Bark Farmers

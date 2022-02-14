@@ -25,7 +25,6 @@ footer {
     margin: 0;
     max-width: 100%;
     width: 100vw;
-    height: 100vh;
     max-height: 100%;
 }
 
@@ -82,6 +81,10 @@ footer {
 
 @media screen and (max-width: 992px) {
 
+    .learn-more-text a {
+        margin: 25px;
+    }
+
     .navbar-nav {
         background-color: rgba(250,250,250,.9);
         border-radius: 5px;
@@ -118,7 +121,7 @@ footer {
 }
 
 .learn-more-text a {
-    margin: 25px;
+    margin: 0;
 }
 
 .learn-more-text h4, .learn-more-text i {

@@ -42,7 +42,7 @@ function showOrder() {
     btnFlip()
 }
 
-$(document).on("load", btnToggle)
+$(document).on("load", btnToggle())
 window.addEventListener("resize", btnToggle)
 profileBtn.addEventListener('click', showOrder)
 orderBtn.addEventListener('click', showInfo)
