@@ -31,13 +31,9 @@ And as much as CSS variables are not statically checked, it functions adequately
 Register was chosen to represent testing for all of the account-related forms, as it is the most complex of them.
 
 ## PEP8 Compliance testing
+PEP8 compliance testing was done using [PEP8 online](http://pep8online.com/)
 ### Checkout views
-
-### Profiles views
-
-### Reviews views
-
-### Home Views
+![alt](assets/images/readme/testing/PEP8Checkout.png)
 
 # Automated Testing
 
