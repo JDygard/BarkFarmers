@@ -1,4 +1,10 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+        render,
+        redirect,
+        reverse,
+        get_object_or_404,
+        HttpResponse
+)
 from django.conf import settings
 from django.contrib import messages
 from decimal import Decimal, getcontext
@@ -6,7 +12,12 @@ from django.views.decorators.http import require_POST
 
 import math
 
-from bark_farmers.settings import BAG_DEPOSIT, DELIVERY_CHARGE_JUMBO, DELIVERY_CHARGE_STANDARD, STACKING_CHARGE
+from bark_farmers.settings import (
+        BAG_DEPOSIT,
+        DELIVERY_CHARGE_JUMBO,
+        DELIVERY_CHARGE_STANDARD,
+        STACKING_CHARGE
+)
 from profiles.forms import UserProfileForm
 from .forms import OrderForm
 from .models import OrderLineItem, Order
@@ -35,7 +46,8 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Sorry, your payment cannot be processed right now. Please try again.')
+        messages.error(request, 'Sorry, your payment cannot '
+                    'be processed right now. Please try again.')
         return HttpResponse(content=e, status=400)
 
 
@@ -77,7 +89,8 @@ def checkout(request):
             )
             order_line_item.save()
             request.session['save_info'] = 'save_info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success',
+                                    args=[order.order_number]))
         else:
             return redirect(reverse('checkout_fail'))
     else:
@@ -85,6 +98,7 @@ def checkout(request):
         template = 'checkout.html'
         delivery_price = 0
         weight = order_item.weight * int(quantity)
+        price = order_item.price
 
         if delivery_method == "delivery":
             if weight <= 4999:
@@ -95,19 +109,19 @@ def checkout(request):
             delivery_price += STACKING_CHARGE
         if product_type == "bag":
             delivery_price += BAG_DEPOSIT
-        price = Decimal(order_item.price) * Decimal(quantity) + Decimal(delivery_price)
+        price = Decimal(price)*Decimal(quantity)+Decimal(delivery_price)
         price = math.ceil(price*100)
 
         stripe_total = price
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
-            amount = stripe_total,
+            amount=stripe_total,
             currency="USD",
         )
 
     if request.user.is_authenticated:
         try:
-            profile=UserProfile.objects.get(user=request.user)
+            profile = UserProfile.objects.get(user=request.user)
             order_form = OrderForm(initial={
                 'full_name': profile.user.get_full_name(),
                 'email': profile.user.email,
@@ -133,10 +147,11 @@ def checkout(request):
 
     return render(request, template, context)
 
+
 def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    
+
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         order.user_profile = profile
@@ -165,6 +180,7 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
 
 def checkout_fail(request):
     template = 'checkout_fail.html'

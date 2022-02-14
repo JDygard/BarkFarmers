@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def profile(request):
-    
+
     """ Display profile """
     profile = get_object_or_404(UserProfile, user=request.user)
 
@@ -34,7 +34,10 @@ def profile(request):
 
     return render(request, template, context)
 
+
 def order_history(request, order_number):
+
+    """ Returns a list of users previous orders """
     order = get_object_or_404(Order, order_number=order_number)
     order_line_items = OrderLineItem.objects.get(order=order)
 

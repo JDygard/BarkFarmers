@@ -7,7 +7,7 @@ from profiles.models import UserProfile
 from django.contrib import auth
 from django.contrib.auth.models import User
 
-# Create your views here.
+
 def reviews(request):
     template = "reviews/reviews.html"
     form = UserReviewForm()
@@ -17,6 +17,7 @@ def reviews(request):
         "entries": entries,
     }
     return render(request, template, context)
+
 
 @login_required
 def submit_reviews(request):
@@ -29,7 +30,7 @@ def submit_reviews(request):
         existing_review = None
 
     if request.method == 'POST':
-        if existing_review == None:
+        if existing_review is None:
             form = UserReviewForm(request.POST)
             if form.is_valid():
                 review = form.save(commit=False)
@@ -38,7 +39,7 @@ def submit_reviews(request):
                 messages.success(request, 'Review submitted successfully')
             else:
                 messages.error(request, 'Submit failed.')
-        else: 
+        else:
             form = UserReviewForm(request.POST, instance=existing_review)
             if form.is_valid():
                 review = form.save(commit=False)
@@ -48,6 +49,5 @@ def submit_reviews(request):
                 form.save()
 
             messages.success(request, 'Review submitted successfully')
-
 
     return redirect(reverse(reviews))
