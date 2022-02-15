@@ -79,7 +79,7 @@ showMore.addEventListener("click", function() {
 // Thanks to https://stackoverflow.com/questions/30171099/is-it-possible-to-detect-form-submit-fail-in-javascript for the following:
 
 // The user must give a rating to submit. If this happens, I gather the submit event and give a little warning
-const myForm = document.getElementById('my-form');
+const myForm = document.getElementById('reviewForm');
 
 // Add a listener to the submit event
 myForm.addEventListener('submit', function (e) {
