@@ -1,9 +1,11 @@
 /* Thanks to https://dev.to/leonardoschmittk/how-to-make-a-star-rating-with-js-36d3 for stars code */
 const ratingStars = [...document.getElementsByClassName("rating__star")];
 var idStars = document.getElementById("id_stars");
+var errorSpan = document.getElementById("error_span");
 if (idStars) {
     idStars.setAttribute("hidden", true)
 }
+
 
 function executeRating(stars) {
     const starClassActive = "rating__star fas fa-star";
@@ -76,16 +78,17 @@ showMore.addEventListener("click", function() {
     }
 })
 
+function validateForm() {
+    let x = idStars.value
+        if (x == 0) {
+            errorSpan.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Please select a rating.'
+            return false;
+        }
+    } 
 // Thanks to https://stackoverflow.com/questions/30171099/is-it-possible-to-detect-form-submit-fail-in-javascript for the following:
 
 // The user must give a rating to submit. If this happens, I gather the submit event and give a little warning
 const myForm = document.getElementById('reviewForm');
 
 // Add a listener to the submit event
-myForm.addEventListener('submit', function (e) {
-    const errors = [];
-
-    if(errors.length) {
-        console.log(errors)
-    }
-});
+myForm.addEventListener('submit', validateForm());
