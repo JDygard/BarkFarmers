@@ -80,10 +80,10 @@ showMore.addEventListener("click", function() {
 
 function validateForm() {
     let x = idStars.value
-    console.log("ValidateForm")
         if (x == 0) {
             errorSpan.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Please select a rating.'
             
+            console.log("ValidateForm")
             return false;
             
         }
