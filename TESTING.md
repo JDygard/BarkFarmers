@@ -52,6 +52,42 @@ The responsiveness test is split into parts, each representing one of the page t
 ![alt](assets/images/readme/testing/responsiveness/profileLG.png)
 ![alt](assets/images/readme/testing/responsiveness/profileSM.png)
 
-# Known Bugs
-
 # Additional Testing
+All responsiveness testing performed in Ubuntu Firefox v97.0
+XL will be represented by the native display resolution of tester's display, 2560 x 1440 pixels. (Although, this is technically xxl according to Bootstrap)
+L will be represented by the native display resolution of tester's 2nd display, 1920 x 1080 pixels.
+M will be represented by iPad Safari 14.1, 810x1080 pixels
+S will be represented by iPhone SE 2nd gen
+
+
+## Index page
+
+| Item tested | Screen  | Result |
+|-------------|---------|--------|
+| Nav offset|XL,L,M,S|No occlusion|
+|Horizontal Scroll|XL,L,M,S|No horizontal scroll|
+|Hyperlinks|XL,L,M,S|All links function as intended, external links open in new tab|
+|General|XL,L,M,S|All elements positioned appropriately|
+
+## Order Page
+
+| Item tested | Screen  | Result |
+|-------------|---------|--------|
+| Nav offset |XL,L,M,S|No occlusion|
+| Horizontal Scroll|XL,L,M,S|No horizontal scroll|
+| Hyperlinks |XL,L,M,S|All links function as intended|
+| General |XL,L,M,S|All elements positioned appropriately|
+| Custom tabulation | XL,L,M,S | Transitions seamlessly from horizontal to vertical, all elements fit in their boxes in both orientations |
+| Order form JS elements | XL,L,M,S | Total calculated correctly in all testing |
+
+## Review Page
+| Item tested | Screen  | Result |
+|-------------|---------|--------|
+| Nav offset |XL,L,M,S|No occlusion|
+| Horizontal Scroll|XL,L,M,S|No horizontal scroll|
+| Hyperlinks |XL,L,M,S|All links function as intended|
+| General |XL,L,M,S|All elements positioned appropriately|
+
+### Bugs found in Order page
+
+When reloading the page, the .on('load'.... method that should reset all order form elements does not perform its task. This enables a customer to potentially order stacked wood to be picked up. This makes no sense, in reality or to the backend, and returns a 500 server error. The error was fixed using jQuery to reset the options on page load.
