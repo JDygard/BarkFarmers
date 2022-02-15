@@ -78,7 +78,7 @@ showMore.addEventListener("click", function() {
     }
 })
 
-var validateForm = function validateForm() {
+function validateForm() {
     let x = idStars.value
     console.log("ValidateForm")
         if (x == 0) {
@@ -94,4 +94,4 @@ var validateForm = function validateForm() {
 const myForm = document.getElementById('reviewForm');
 
 // Add a listener to the submit event
-myForm.addEventListener('submit', validateForm);
+$("#reviewForm").on('submit', validateForm());
