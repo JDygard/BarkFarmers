@@ -1,3 +1,6 @@
+# Bark Farmers
+![alt text](assets/images/readme/amiresponsive.png)
+
 # Important notes for evaluators
 
 ## Login information
@@ -203,6 +206,41 @@ Heroku will be providing the hosting services for this software.
         STRIPE_WH_SECRET
         EMAIL_HOST_USER
         EMAIL_HOST_PASS
+
+# Technologies Used
+## HTML/CSS
+The project uses HTML5 and CSS to build and style pages.
+***
+## Javascript (JS) and JQuery
+Javascript is used in most pages.
+
+### Order page (order.js)
+JS is used to manipulate the order menu, displays prices dynamically, and keeps hidden inputs updated.
+
+### Profile page (profile.js)
+JS is used to replace the two-fold layout on wide screens with a tab system on smaller screens.
+
+### Index page (index.js)
+JS is used to move the "learn more" button and turn it into a "back to top" button as the user scrolls.
+
+### Stripe Element (stripe_elements.js)
+JS is used to create a custom Stripe payment flow on the checkout page (checkout.html)
+
+### Review page (review.js)
+JS is used to hide the comment box in order to display more reviews
+***
+## Python
+Python is the language used in the backend.
+***
+## Django
+- [Django](https://www.djangoproject.com/) is the web framework used in this project
+- Django templating language is used in page rendering.
+- Django allauth library was used for authentication.
+***
+## Other
+- [Bootstrap 5.0](https://getbootstrap.com/docs/5.0) Much of this project is built with Bootstrap.
+- [Github](https://github.com/)
+- [FontAwesome](https://fontawesome.com/)
 
 # Known issues
 ## SECRET_KEY exposed

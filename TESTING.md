@@ -35,7 +35,7 @@ PEP8 compliance testing was done using [PEP8 online](http://pep8online.com/)
 ### Checkout views
 ![alt](assets/images/readme/testing/PEP8Checkout.png)
 
-# Automated Testing
+This is the result on the checkout view, and all other view files.
 
 # Responsiveness Test
 
