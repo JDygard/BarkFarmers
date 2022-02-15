@@ -3,6 +3,7 @@ const ratingStars = [...document.getElementsByClassName("rating__star")];
 var idStars = document.getElementById("id_stars");
 if (idStars) {
     idStars.setAttribute("hidden", true)
+    idStars.setAttribute("required")
 }
 
 function executeRating(stars) {
@@ -12,7 +13,6 @@ function executeRating(stars) {
     let i;
     stars.map((star) => {
         star.onclick = () => {
-            console.log("version 1.0")
             i = stars.indexOf(star);
             idStars.value = i;
             if (star.className===starClassInactive) {
@@ -26,6 +26,7 @@ function executeRating(stars) {
         };
     });
 }
+
 if (idStars) {
     executeRating(ratingStars);
 }
