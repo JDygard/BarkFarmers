@@ -68,7 +68,7 @@ S will be represented by iPhone SE 2nd gen
 |Horizontal Scroll|XL,L,M,S|No horizontal scroll|
 |Hyperlinks|XL,L,M,S|All links function as intended, external links open in new tab|
 |General|XL,L,M,S|All elements positioned appropriately|
-
+***
 ## Order Page
 
 | Item tested | Screen  | Result |
@@ -80,6 +80,11 @@ S will be represented by iPhone SE 2nd gen
 | Custom tabulation | XL,L,M,S | Transitions seamlessly from horizontal to vertical, all elements fit in their boxes in both orientations |
 | Order form JS elements | XL,L,M,S | Total calculated correctly in all testing |
 
+### Bugs found in Order page
+
+When reloading the page, the .on('load'.... method that should reset all order form elements does not perform its task. This enables a customer to potentially order stacked wood to be picked up. This makes no sense, in reality or to the backend, and returns a 500 server error. The error was fixed using jQuery to reset the options on page load.
+***
+
 ## Review Page
 | Item tested | Screen  | Result |
 |-------------|---------|--------|
@@ -87,7 +92,8 @@ S will be represented by iPhone SE 2nd gen
 | Horizontal Scroll|XL,L,M,S|No horizontal scroll|
 | Hyperlinks |XL,L,M,S|All links function as intended|
 | General |XL,L,M,S|All elements positioned appropriately|
+| JS reviews control|XL,L,M,S||
 
-### Bugs found in Order page
+### Bugs found in the reviews page
 
-When reloading the page, the .on('load'.... method that should reset all order form elements does not perform its task. This enables a customer to potentially order stacked wood to be picked up. This makes no sense, in reality or to the backend, and returns a 500 server error. The error was fixed using jQuery to reset the options on page load.
+A user cannot submit a review without a star rating, but there is no message letting them know that that is the issue.
