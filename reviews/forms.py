@@ -13,3 +13,4 @@ class UserReviewForm(forms.ModelForm):
         self.fields["review"].widget.attrs['class'] = 'border-black rounded-0 review-form-input'
         self.fields["review"].label = False
         self.fields["stars"].label = False
+        self.fields["stars"].widget.attrs['required'] = True

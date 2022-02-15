@@ -24,9 +24,7 @@ def submit_reviews(request):
     existing_review = None
     profile = get_object_or_404(UserProfile, user=request.user)
     existing_review = UserReview.objects.filter(user=profile).first()
-    print(existing_review)
     if not existing_review:
-        print("no review in db")
         existing_review = None
 
     if request.method == 'POST':

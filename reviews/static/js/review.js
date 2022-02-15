@@ -3,7 +3,6 @@ const ratingStars = [...document.getElementsByClassName("rating__star")];
 var idStars = document.getElementById("id_stars");
 if (idStars) {
     idStars.setAttribute("hidden", true)
-    idStars.setAttribute("required", "")
 }
 
 function executeRating(stars) {
