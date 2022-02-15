@@ -78,7 +78,7 @@ showMore.addEventListener("click", function() {
     }
 })
 
-function validateForm() {
+var validateForm = function validateForm() {
     let x = idStars.value
     console.log("ValidateForm")
         if (x == 0) {
