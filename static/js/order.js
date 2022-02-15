@@ -154,12 +154,10 @@ for (i = 0; i < element_IDs.length; i++) {
         quantityTotal = 1;
     }
 
+    $(document).on("load", optionReset());
     deliverySelect.addEventListener('change', updateOnChange);
     typeSelect.addEventListener('change', updateOnChange);
     quantityTotal.addEventListener('input', updateOnChange);
-    deliverySelect.addEventListener('load', optionReset);
-    quantityTotal.addEventListener('load', optionReset);
-    typeSelect.addEventListener('load', optionReset);
 };
 
 

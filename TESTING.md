@@ -38,6 +38,19 @@ PEP8 compliance testing was done using [PEP8 online](http://pep8online.com/)
 This is the result on the checkout view, and all other view files.
 
 # Responsiveness Test
+The responsiveness test is split into parts, each representing one of the page templates.
+
+## Index page
+![alt](assets/images/readme/testing/responsiveness/indexXL.png)
+![alt](assets/images/readme/testing/responsiveness/indexLG.png)
+![alt](assets/images/readme/testing/responsiveness/indexSM.png)
+
+(Note: This screenshot was taken before the media query fixing the small white arrow in the "Learn more" text was implemented. The final version is corrected)
+
+## Profile-box
+![alt](assets/images/readme/testing/responsiveness/profileXL.png)
+![alt](assets/images/readme/testing/responsiveness/profileLG.png)
+![alt](assets/images/readme/testing/responsiveness/profileSM.png)
 
 # Known Bugs
 
