@@ -91,4 +91,4 @@ function validateForm() {
 const myForm = document.getElementById('reviewForm');
 
 // Add a listener to the submit event
-myForm.addEventListener('submit', validateForm());
+myForm.addEventListener('submit', validateForm);
