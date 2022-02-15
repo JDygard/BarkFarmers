@@ -157,7 +157,9 @@ for (i = 0; i < element_IDs.length; i++) {
     deliverySelect.addEventListener('change', updateOnChange);
     typeSelect.addEventListener('change', updateOnChange);
     quantityTotal.addEventListener('input', updateOnChange);
-    $(document).on("load", optionReset());
+    deliverySelect.addEventListener('load', optionReset);
+    quantityTotal.addEventListener('load', optionReset);
+    typeSelect.addEventListener('load', optionReset);
 };
 
 
