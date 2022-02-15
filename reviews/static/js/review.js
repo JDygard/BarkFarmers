@@ -3,7 +3,8 @@ const ratingStars = [...document.getElementsByClassName("rating__star")];
 var idStars = document.getElementById("id_stars");
 var errorSpan = document.getElementById("error_span");
 if (idStars) {
-    idStars.setAttribute("hidden", true)
+    idStars.value = 0;
+    idStars.setAttribute("hidden", true);
 }
 
 
@@ -80,6 +81,7 @@ showMore.addEventListener("click", function() {
 
 function validateForm() {
     let x = idStars.value
+    
         if (x == 0) {
             errorSpan.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Please select a rating.'
             
