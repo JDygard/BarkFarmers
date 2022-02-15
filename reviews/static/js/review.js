@@ -80,9 +80,12 @@ showMore.addEventListener("click", function() {
 
 function validateForm() {
     let x = idStars.value
+    console.log("ValidateForm")
         if (x == 0) {
             errorSpan.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Please select a rating.'
+            
             return false;
+            
         }
     } 
 // Thanks to https://stackoverflow.com/questions/30171099/is-it-possible-to-detect-form-submit-fail-in-javascript for the following:
