@@ -206,7 +206,7 @@ Heroku will be providing the hosting services for this software.
         STRIPE_WH_SECRET
         EMAIL_HOST_USER
         EMAIL_HOST_PASS
-
+        
 # Technologies Used
 ## HTML/CSS
 The project uses HTML5 and CSS to build and style pages.
