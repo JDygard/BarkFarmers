@@ -83,7 +83,7 @@ function validateForm() {
     let x = idStars.value
     
         if (x == 0) {
-            errorSpan.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Please select a rating.'
+            errorSpan.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please select a rating.'
             
             console.log("ValidateForm")
             return false;

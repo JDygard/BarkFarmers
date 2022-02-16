@@ -185,7 +185,7 @@ a {
 /* Style the review page */
 /* thanks to https://dev.to/leonardoschmittk/how-to-make-a-star-rating-with-js-36d3 */
 .rating {
-    width: 180px;
+    width: auto;
  }
  
  .rating__star {
