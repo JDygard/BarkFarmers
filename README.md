@@ -250,3 +250,9 @@ During development, some commits contained the Django SECRET_KEY. This was the i
 All directly borrowed code is noted in comment lines above the borrowed code. Very little of it is unaltered, but it is still attributed.
 
 The exception to this is code and structure used from the Boutique Ado project.
+
+# Acknowledgements
+
+- My mentor, Antonio, for level-headed advice
+- My family and friends for tolerated looking at 100 versions of this site
+- The Code Institute student support team, without whom I'd have had a much harder time finishing this.
