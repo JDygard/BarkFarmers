@@ -245,3 +245,8 @@ Python is the language used in the backend.
 # Known issues
 ## SECRET_KEY exposed
 During development, some commits contained the Django SECRET_KEY. This was the insecure key generated during Django initialization, and should be changed anyway. The SECRET_KEY exposed in the commits is not the current one.
+
+# Code Credits
+All directly borrowed code is noted in comment lines above the borrowed code. Very little of it is unaltered, but it is still attributed.
+
+The exception to this is code and structure used from the Boutique Ado project.

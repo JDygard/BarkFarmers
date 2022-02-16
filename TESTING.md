@@ -3,9 +3,7 @@
 ## Contents
 
 * [Code Validation](<#code-validation>)
-* [Automated Testing](<#automated-testing-with-jest-and-unittest>)
 * [Responsiveness Test](<#responsiveness-test>)
-* [Known Bugs](<#known-bugs>)
 * [Additional Testing](<#additional-testing>)
 
 # Code validation
@@ -92,8 +90,18 @@ When reloading the page, the .on('load'.... method that should reset all order f
 | Horizontal Scroll|XL,L,M,S|No horizontal scroll|
 | Hyperlinks |XL,L,M,S|All links function as intended|
 | General |XL,L,M,S|All elements positioned appropriately|
-| JS reviews control|XL,L,M,S||
-
+| JS reviews control|XL,L,M,S|Reviews can be submitted and altered. Interactive elements are hidden to unauthenticated users.|
 ### Bugs found in the reviews page
 
-A user cannot submit a review without a star rating, but there is no message letting them know that that is the issue.
+A user cannot submit a review without a star rating, but there is no message letting them know that that is the issue. This was fixed by capturing the submit event, and testing the hidden field. If it is 0, a span is generated with a warning symbol and a message.
+***
+## Profile page
+| Item tested | Screen  | Result |
+|-------------|---------|--------|
+| Nav offset |XL,L,M,S|No occlusion|
+| Horizontal Scroll|XL,L,M,S|No horizontal scroll|
+| Hyperlinks |XL,L,M,S|All links function as intended|
+| General |XL,L,M,S|All elements positioned appropriately|
+| Authentication | n/a | Page cannot be accessed by unauthenticated users.|
+| Edit user info form| n/a | The users information can be edited using the form |
+| Order history | n/a | order history shows as expected. Each item can be accessed for a copy of the confirmation. The "purchase again" button functions as intended. |
